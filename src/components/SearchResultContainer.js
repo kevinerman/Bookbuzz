@@ -4,6 +4,7 @@ import ResultList from "./ResultList";
 import API from "../utils/API"
 
 class SearchResultContainer extends Component {
+
   state = {
     search: "",
     results: []
@@ -14,13 +15,18 @@ class SearchResultContainer extends Component {
     this.searchBooks("kittens");
   }
 
+
   searchBooks = query => {
     API.search(query)
     .then(res => this.setState({results: res.data.items}),
   console.log(this.state.results))
-      .catch(err => console.log(err));
-
+      // .catch(err => console.log(err));
   };
+
+  saveButton = buttonID => {
+    let clickedButton = this.state.results[buttonID].volumeInfo
+    console.log(clickedButton.title, clickedButton.authors);
+  }
 
   handleInputChange = event => {
     const name = event.target.name;
@@ -44,7 +50,10 @@ class SearchResultContainer extends Component {
           handleFormSubmit={this.handleFormSubmit}
           handleInputChange={this.handleInputChange}
         />
-        <ResultList results={this.state.results} />
+        <ResultList 
+        results={this.state.results}
+        saveButton={this.saveButton}
+         />
       </div>
     );
   }
