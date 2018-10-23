@@ -11,11 +11,7 @@ class Home extends Component {
         <hr />
       
       <Wrapper>
-      
-      <div>
         <SearchResultContainer />
-      </div>
-      
       </Wrapper>
       </div>
     );

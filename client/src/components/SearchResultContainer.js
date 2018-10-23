@@ -44,6 +44,7 @@ class SearchResultContainer extends Component {
   render() {
     return (
       <div>
+        <h1 className="text-center"> Search for a book:</h1>
         <SearchForm
           search={this.state.search}
           handleFormSubmit={this.handleFormSubmit}

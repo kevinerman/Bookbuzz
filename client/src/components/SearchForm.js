@@ -2,11 +2,9 @@ import React from "react";
 
 const SearchForm = props => (
   <form>
-    <hr/>
-    <hr/>
-    <hr/>
+    
     <div className="form-group">
-      <label htmlFor="search">Search:</label>
+      {/* <label htmlFor="search" className="text-success">Search:</label> */}
       
       <input
         onChange={props.handleInputChange}
@@ -19,8 +17,7 @@ const SearchForm = props => (
       />
       <button
         onClick={props.handleFormSubmit}
-        className="btn btn-primary mt-3"
-      >
+        className="btn btn-outline-warning btn-lg btn-block">
         Search
       </button>
     </div>
