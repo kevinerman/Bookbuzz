@@ -3,49 +3,56 @@ import React, { Component } from "react";
 // import axios from "axios";
 
 export default class LoginForm extends Component {
-   constructor(){
-       super();
-       this.state ={
-           username: "",
-           password: ""
-       }
-   }
+  constructor() {
+    super();
+    this.state = {
+      username: "",
+      password: ""
+    };
+  }
 
-handlePasswordChanged(event){
+  handlePasswordChanged(event) {
     this.setState({ password: event.target.value });
-}
+  }
 
-handleUsernameChanged(event){
+  handleUsernameChanged(event) {
     this.setState({ username: event.target.value });
-}
+  }
 
-handleSubmitForm(event){
+  handleSubmitForm(event) {
     event.preventDefault();
     //axios will come here to check log in and use ternary operator to go to the next page.
     alert("We need to check for log in and redirect to the route");
     // <Redirect to="/home">Login</Redirect>
-}
-   render(){
-       return(
-           <div>
-               <hr /><hr /><hr /><hr />
-               
-               <input placeholder="username"
-               name = "username"
-               type="text"
-               id="username"
-               onChange={this.handleUsernameChanged.bind(this)}/>
-               <input placeholder="password"
-               name = "password"
-               type="password"
-               id="password"
-               onChange={this.handlePasswordChanged.bind(this)}/>
-               <button onClick={this.handleSubmitForm}>submit</button>
+  }
+  render() {
+    return (
+      <div>
+        <hr />
+        <hr />
+        <hr />
+        <hr />
 
-           </div>
-       )
-   }
+        <form>
+          <input
+            placeholder="username"
+            name="username"
+            type="text"
+            id="username"
+            onChange={this.handleUsernameChanged.bind(this)}
+          />
+          <input
+            placeholder="password"
+            name="password"
+            type="password"
+            id="password"
+            onChange={this.handlePasswordChanged.bind(this)}
+          />
+          <button onClick={this.handleSubmitForm}>submit</button>
+        </form>
+      </div>
+    );
+  }
 }
-
 
 //links and router to /login and /home
