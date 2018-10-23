@@ -2,8 +2,12 @@ import React from "react";
 
 const SearchForm = props => (
   <form>
+    <hr/>
+    <hr/>
+    <hr/>
     <div className="form-group">
       <label htmlFor="search">Search:</label>
+      
       <input
         onChange={props.handleInputChange}
         value={props.search}
