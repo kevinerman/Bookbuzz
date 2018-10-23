@@ -9,23 +9,45 @@ var thumbnailCheck = function(result) {
 }
 
 const ResultList = props => (
-  <ul className="list-group">
-    {props.results.map(result => (
-      <li className="list-group-item" key={result.id}>
-      <p>{result.volumeInfo.title}</p>
-      <p>By: {result.volumeInfo.authors}</p>
-        <img 
-          alt="No Content"
-          className="img-fluid"
-          src={thumbnailCheck(result)}
-        />
-        <br></br>
-        <button className={props.results.indexOf(result)}
-        onClick = {() => props.saveButton(props.results.indexOf(result))}
-        >Save</button>
-      </li>
+
+  <div class="container">
+  <div class="row">
+  
+
+  {props.results.map(result => (
+      <div className="col-6" key={result.id}>
+        <h5>{result.volumeInfo.title}</h5>
+        By:{result.volumeInfo.authors}
+        <img alt="No Content" className="img-fluid" src={thumbnailCheck(result)}/>
+        <br/><br/>
+        <button className={props.results.indexOf(result) + " btn-warning "}  onClick = {() => props.saveButton(props.results.indexOf(result))}>Save</button>
+      </div>
     ))}
-  </ul>
+  
+
+
+
+
+  
+  </div>
+  </div>
+
+
+
+
+    
+    
+
+
+
+
+
+  
+  
+  
+  
+  
+
 );
 
 export default ResultList;
