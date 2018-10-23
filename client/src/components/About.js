@@ -1,15 +1,27 @@
 import React from "react";
 
+
 const About = props => (
   <div>
     <hr/>
     <hr/>
     <hr/>
-      <h1>{props.title}</h1>
-      <h2>Arnab</h2>
-      <h2>Rion</h2>
-      <h2>Kevin</h2>
-      <h2>Joe</h2>
+      
+
+
+<div className="jumbotron jumbotron-fluid">
+  <div className="container">
+    <h1 className="display-4">{props.title}</h1>
+    <p className="lead">About this app. </p>
+  </div>
+</div>
+
+
+
+
+
+
+
   </div>
 );
 

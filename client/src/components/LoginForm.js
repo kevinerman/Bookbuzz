@@ -28,6 +28,7 @@ handleSubmitForm(event){
    render(){
        return(
            <div>
+               <hr /><hr /><hr /><hr />
                
                <input placeholder="username"
                name = "username"
