@@ -17,8 +17,18 @@ app.use(routes);
 
 // Connect to the Mongo DB
 mongoose.connect(
-  process.env.MONGODB_URI || "mongodb://localhost/BookBuzz"
+  process.env.MONGODB_URI || "mongodb://localhost/BookBuzz", { useNewUrlParser: true }
 );
+
+var db = require("./models");
+db.Book.create({ title: "Ernest Hemingway" }, {author : "Arnab Hemingway"})
+  .then(function(dbUser) {
+    console.log(dbUser);
+  })
+  .catch(function(err) {
+    console.log(err.message);
+  });
+
 
 // Start the API server
 app.listen(PORT, function() {
