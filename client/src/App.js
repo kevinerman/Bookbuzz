@@ -7,7 +7,7 @@ import About from "./pages/About/About";
 import Login from "./pages/Login/Login";
 import BookClub from "./pages/BookClub/BookClub";
 import Search from "./pages/Search/Search";
-// import SavedBooks from './pages/SavedBooks/SavedBooks';
+import SavedBooks from './pages/SavedBooks/SavedBooks';
 import './App.css';
  
 
@@ -22,7 +22,7 @@ const App = () => (
           <Route exact path="/about" component={About} />
           <Route exact path="/bookclub" component={BookClub} />
           <Route exact path="/home" component={Search} />
-          {/* <Route exact path="/saved/" component={SavedBooks} />   */}
+          <Route exact path="/saved" component={SavedBooks} />  
           <Route component={NoMatch} />
         </Switch>      
       </div>

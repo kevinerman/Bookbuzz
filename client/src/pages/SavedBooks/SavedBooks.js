@@ -13,8 +13,9 @@ class SavedBooks extends Component {
     this.getBooksHandler();
   }
 
-  getArticlesHandler() {
+  getBooksHandler() {
     myAPI.getBooks()
+   
       .then(res => this.setState({savedBooks: res.data}))
       .catch(err => console.log(err));
   }
