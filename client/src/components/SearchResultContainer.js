@@ -1,13 +1,15 @@
 import React, { Component } from "react";
 import SearchForm from "./SearchForm";
 import ResultList from "./ResultList";
-import API from "../utils/API"
+import API from "../utils/googleAPI"
 
 class SearchResultContainer extends Component {
 
   state = {
     search: "",
-    results: []
+    results: [],
+    showResults: false,
+    error: ""
   };
 
   // When this component mounts, search the Giphy API for pictures of kittens
@@ -56,10 +58,14 @@ class SearchResultContainer extends Component {
           handleFormSubmit={this.handleFormSubmit}
           handleInputChange={this.handleInputChange}
         />
-        <ResultList
-          results={this.state.results}
-          saveButton={this.saveButton}
-        />
+        <ResultList 
+        results={this.state.results}
+        saveButton={this.saveButton}
+         />
+
+
+
+
       </div>
     );
   }
