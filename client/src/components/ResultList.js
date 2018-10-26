@@ -1,6 +1,6 @@
 import React from "react";
 
-var thumbnailCheck = function(result) {
+var thumbnailCheck = function (result) {
   if (!result.volumeInfo.imageLinks) {
     return ("https://www.waltercedric.com/media/plg_cedthumbnails/default-300x250.jpg")
   } else {
@@ -11,42 +11,40 @@ var thumbnailCheck = function(result) {
 const ResultList = props => (
 
   <div class="container">
-  <div class="row">
-  
-
-  {props.results.map(result => (
-      <div className="col-6" key={result.id}>
-        <h5>{result.volumeInfo.title}</h5>
-        By:{result.volumeInfo.authors}
-        <img alt="No Content" className="img-fluid" src={thumbnailCheck(result)}/>
-        <br/><br/>
-        <button className={props.results.indexOf(result) + " btn-warning "}  onClick = {() => props.saveButton(props.results.indexOf(result))}>Save</button>
-      </div>
-    ))}
-  
+    <div class="row">
 
 
-
-
-  
-  </div>
+      {props.results.map(result => (
+        <div className="col-6" key={result.id}>
+          <h5>{result.volumeInfo.title}</h5>
+          By:{result.volumeInfo.authors}
+          <img alt="No Content" className="img-fluid" src={thumbnailCheck(result)} />
+          <br /><br />
+          {/* <form action="/saveBook" method="post"> */}
+          <input value="Save Book"type="submit" className={props.results.indexOf(result) + " btn-warning "} 
+          onClick={() => props.saveButton(props.results.indexOf(result))}
+          ></input>
+          {/* </form> */}
+        </div>
+      ))}
+    </div>
   </div>
 
 
 
 
-    
-    
 
 
 
 
 
-  
-  
-  
-  
-  
+
+
+
+
+
+
+
 
 );
 
