@@ -26,10 +26,7 @@ mongoose.connect(
 
 
 app.post("/saveBook", function(req, res) {
-db.Book.create({
-  title: req.title, 
-  author : req.author})
-
+db.Book.create({title: req.body.title, author: req.body.author})
   .then(function(dbBook) {
     res.json(dbBook);
   })

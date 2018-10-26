@@ -20,11 +20,11 @@ const ResultList = props => (
           By:{result.volumeInfo.authors}
           <img alt="No Content" className="img-fluid" src={thumbnailCheck(result)} />
           <br /><br />
-          {/* <form action="/saveBook" method="post"> */}
-          <input value="Save Book"type="submit" className={props.results.indexOf(result) + " btn-warning "} 
-          onClick={() => props.saveButton(props.results.indexOf(result))}
-          ></input>
-          {/* </form> */}
+          <form action="/saveBook" method="post">
+            <input type="text" name="title" value={props.saveButton(props.results.indexOf(result)).newTitle} className={props.results.indexOf(result) + " btn-warning "}></input>
+            <input type="text" name="author" value={props.saveButton(props.results.indexOf(result)).newAuthor[0]} className={props.results.indexOf(result) + " btn-warning "}></input>
+            <input type="submit"></input>
+          </form>
         </div>
       ))}
     </div>

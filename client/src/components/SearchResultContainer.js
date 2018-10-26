@@ -26,9 +26,11 @@ class SearchResultContainer extends Component {
 
   saveButton = buttonID => {
     let clickedButton = this.state.results[buttonID].volumeInfo;
-        let newTitle = clickedButton.title;
-        let newAuthor = clickedButton.authors;
-        console.log(newTitle, newAuthor[0]);
+    let newBook = {
+        newTitle: clickedButton.title,
+        newAuthor: clickedButton.authors
+    }
+        return newBook
       }
 
   handleInputChange = event => {
