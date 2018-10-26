@@ -17,15 +17,21 @@ class SearchResultContainer extends Component {
 
   searchBooks = query => {
     API.search(query)
-    .then(res => this.setState({results: res.data.items}),
-  console.log(this.state.results))
-      // .catch(err => console.log(err));
+      .then(res => this.setState({ results: res.data.items }),
+        console.log(this.state.results))
+    // .catch(err => console.log(err));
   };
 
+
+
   saveButton = buttonID => {
-    let clickedButton = this.state.results[buttonID].volumeInfo
-    console.log(clickedButton.title, clickedButton.authors);
-  }
+    let clickedButton = this.state.results[buttonID].volumeInfo;
+    let newBook = {
+        newTitle: clickedButton.title,
+        newAuthor: clickedButton.authors
+    }
+        return newBook
+      }
 
   handleInputChange = event => {
     const name = event.target.name;
@@ -50,10 +56,10 @@ class SearchResultContainer extends Component {
           handleFormSubmit={this.handleFormSubmit}
           handleInputChange={this.handleInputChange}
         />
-        <ResultList 
-        results={this.state.results}
-        saveButton={this.saveButton}
-         />
+        <ResultList
+          results={this.state.results}
+          saveButton={this.saveButton}
+        />
       </div>
     );
   }
