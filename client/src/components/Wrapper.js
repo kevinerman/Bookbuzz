@@ -3,7 +3,7 @@ import React from "react";
 import './Wrapper.css';
 
 const Wrapper = (props) => (
-  <div>
+  
    <div id="wrapper">
         <div id="container">
     
@@ -26,8 +26,6 @@ const Wrapper = (props) => (
         </div>
     </div>
 
-
-  </div>
 );
 
 export default Wrapper;

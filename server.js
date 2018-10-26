@@ -8,7 +8,7 @@ var db = require("./models");
 
 
 // Define middleware here
-app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 // Serve up static assets (usually on heroku)
 if (process.env.NODE_ENV === "production") {
@@ -22,35 +22,14 @@ mongoose.connect(
   process.env.MONGODB_URI || "mongodb://localhost/BookBuzz", { useNewUrlParser: true }
 );
 
-// Routes
-
-
-app.post("/saveBook", function(req, res) {
-db.Book.create({title: req.body.title, author: req.body.author})
-  .then(function(dbBook) {
-    res.json(dbBook);
-  })
-  .catch(function(err) {
-    console.log(err.message);
-  });
-});
-
-db.User.create(
-  {username: "BookLover44",
-  savedBooks: [],
-  savedClubs: []}
-).catch(function(err) {
-  console.log(err.message);
-});
-
-db.Club.create(
-  {clubName: "Books for Dads",
-  currentBook: "Hop on Pop",
-  meetingDate: "Every Tuesday at 7PM",
-  clubMembers: []}
-).catch(function(err) {
-  console.log(err.message);
-});
+var db = require("./models");
+// db.Book.create({ title: "Ernest Hemingway" }, {author : "Arnab Hemingway"})
+//   .then(function(dbUser) {
+//     console.log(dbUser);
+//   })
+//   .catch(function(err) {
+//     console.log(err.message);
+//   });
 
 
 // Start the API server
