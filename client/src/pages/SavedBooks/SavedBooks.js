@@ -3,6 +3,7 @@ import React, { Component } from "react";
 import Card from '../../components/Card/card';
 import BookScraped from '../../components/BookScraped/BookScraped';
 import myAPI from "../../utils/API";
+import Wrapper from "../../components/Wrapper";
 
 class SavedBooks extends Component {
   state = {
@@ -26,7 +27,6 @@ class SavedBooks extends Component {
     }
 
   render() {
-
     let saved = <p>There are no books saved!</p>
 
     if (this.state.savedBooks.length > 0) {
@@ -43,15 +43,22 @@ class SavedBooks extends Component {
             action={this.deleteBooksHandler}
             saveTitle="Delete from saved" />
       });
+
     }
 
     return (
       <div>
+        <hr />
+        <hr />
+        <hr />
+        <Wrapper>
         <Card title="Saved Articles">
          {saved}
         </Card>
+        </Wrapper>
       </div>
     )
+
   }
 }
 
