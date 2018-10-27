@@ -30,7 +30,7 @@ export default class LoginForm extends Component {
       <div>
         <div className="text-center">
           <h1> Log in! </h1>
-          <p> The email address will be your username </p>
+          {/* <p> The email address will be your username </p> */}
         </div>
         <form>
           <div className="form-group">
@@ -44,9 +44,9 @@ export default class LoginForm extends Component {
               placeholder="Enter email"
               onChange={this.handleUsernameChanged.bind(this)}
             />
-            <small id="emailHelp" className="form-text text-muted">
+            {/* <small id="emailHelp" className="form-text text-muted">
               We'll never share your email with anyone else.
-            </small>
+            </small> */}
           </div>
           <div className="form-group">
             <label for="password">Password</label>
@@ -68,48 +68,44 @@ export default class LoginForm extends Component {
             Submit
           </button>
         </form>
-        <br /> <br />   <br /> 
+        <br /> <br /> <br />
         <div className="text-center">
           <h1> Register Here! </h1>
           <p> The email address will be your username </p>
         </div>
         <form>
           <div className="form-group">
-            <label for="exampleFormControlInput1">Email address</label>
+            <label for="email_register">Email address</label>
             <input
               type="email"
               className="form-control"
-              id="exampleFormControlInput1"
+              id="email_register"
               placeholder="name@example.com"
             />
           </div>
 
           <div className="form-group">
-            <label for="exampleFormControlSelect1">Example select</label>
-            <select className="form-control" id="exampleFormControlSelect1">
-              <option>1</option>
-              <option>2</option>
-              <option>3</option>
-              <option>4</option>
-              <option>5</option>
-            </select>
-          </div>
-          <div className="form-group">
-            <label for="exampleFormControlSelect2">
-              Example multiple select
-            </label>
-            <select
-              multiple
+            <label for="password_register">Password</label>
+            <input
+              type="password"
+              name="password_register"
               className="form-control"
-              id="exampleFormControlSelect2"
-            >
-              <option>1</option>
-              <option>2</option>
-              <option>3</option>
-              <option>4</option>
-              <option>5</option>
-            </select>
+              id="password_register"
+              placeholder="Password"
+              // onChange={this.handlePasswordInput.bind(this)}
+            />
           </div>
+
+          <div className="form-group">
+            <label for="fname_register">Full Name</label>
+            <input
+              type="text"
+              className="form-control"
+              id="fname_register"
+              placeholder="name@example.com"
+            />
+          </div>
+
           <div className="form-group">
             <label for="exampleFormControlTextarea1">Example textarea</label>
             <textarea
@@ -118,6 +114,23 @@ export default class LoginForm extends Component {
               rows="3"
             />
           </div>
+
+          <div class="form-group">
+            <label for="exampleFormControlFile1">Example file input</label>
+            <input
+              type="file"
+              class="form-control-file"
+              id="exampleFormControlFile1"
+            />
+          </div>
+          <br />
+          <button
+            type="submit"
+            className="btn btn-outline-warning btn-lg btn-block"
+            // onClick={this.handleRegistrationForm}
+          >
+            Register NOW!
+          </button>
         </form>
       </div>
     );

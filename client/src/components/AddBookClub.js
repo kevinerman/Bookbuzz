@@ -1,5 +1,5 @@
 import React from "react";
-import './styles.css';
+import "./styles.css";
 
 const AddClub = props => (
   <div>
@@ -56,7 +56,7 @@ const AddClub = props => (
         />
       </div>
       <div className="form-group">
-      <label for="start-time">End Date/time:</label>
+        <label for="start-time">End Date/time:</label>
         <input
           type="datetime-local"
           id="end-time"
@@ -70,24 +70,11 @@ const AddClub = props => (
 
       <button
         // onClick={props.handleFormSubmit}
-        className="btn btn-outline-warning btn-lg btn-block">
+        className="btn btn-outline-warning btn-lg btn-block"
+      >
         Add Club
       </button>
-
-
     </form>
-
-    
-    <div>
-      1500s, when an unknown printer took a galley of type and scrambled it to
-      make a type specimen book. It has survived not only five centuries, but
-      also the leap into electronic typesetting, remaining essentially
-      unchanged. It was popularised in the 1960s with the release of Letraset
-      sheets containing Lorem Ipsum passages, and more recently with desktop
-      publishing software like Aldus PageMaker including versions of Lorem
-      Ipsum.
-    </div>
-    
   </div>
 );
 

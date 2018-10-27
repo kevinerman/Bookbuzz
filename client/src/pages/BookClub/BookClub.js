@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import AddBookClub from "../../components/AddBookClub";
 import YourBookClub from "../../components/yourBookClub";
-import SavedBooks from "../../components/savedBooks";
+import SearchClubs from "../../components/searchBookClub";
 import Wrapper from "../../components/Wrapper";
 
 class BookClub extends Component {
@@ -14,7 +14,8 @@ class BookClub extends Component {
       
       <Wrapper>
         <AddBookClub />
-        <SavedBooks />
+        <br />
+        <SearchClubs />
         <YourBookClub />
       </Wrapper>
       </div>
