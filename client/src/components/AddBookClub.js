@@ -1,5 +1,6 @@
 import React from "react";
 import "./styles.css";
+import myAPI from "../utils/API";
 
 export default class NameForm extends React.Component {
   constructor(props) {
@@ -27,13 +28,35 @@ export default class NameForm extends React.Component {
   }
 
   handleSubmit(event) {
-    alert("A book club name was submitted: " + this.state.clubName);
     event.preventDefault();
+    alert(
+      "' book club name was submitted: " +
+        this.state.clubName +
+        " book name " +
+        this.state.bookName +
+        " meeting date and time " +
+        this.state.meetingDate
+    );
+
+    // const data = new FormData(event.target);
+    // const data = document.getElementById("addClubForm");
+    // let formData= new FormData(data);
+    let formData = { clubName: this.state.clubName, bookName : this.state.bookName, meetingDate : this.state.meetingDate}
+
+    console.log(formData);
+    myAPI.postClubs(formData)
+      .then(function(response) {
+        console.log(response);
+      })
+      .catch(function(error) {
+        console.log(error);
+        //Perform action based on error
+      });
   }
 
   render() {
     return (
-      <form onSubmit={this.handleSubmit}>
+      <form idname="addClubForm" onSubmit={this.handleSubmit}>
         <label>
           Club Name:
           <input
@@ -70,5 +93,3 @@ export default class NameForm extends React.Component {
     );
   }
 }
-
-

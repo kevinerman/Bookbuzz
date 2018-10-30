@@ -23,7 +23,7 @@ mongoose.connect(
 );
 
 var db = require("./models");
-// db.Book.create({ title: "Ernest Hemingway" }, {author : "Arnab Hemingway"})
+// db.Club.create({ clubName: "Ernest Hemingway" }, {bookName : "Get a life"}, {meetingDate : "Tueaday 5 pm"})
 //   .then(function(dbUser) {
 //     console.log(dbUser);
 //   })
