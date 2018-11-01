@@ -10,3 +10,8 @@ form {
 .font-style {
     font-size: 12px;
 }
+
+#block {
+    /* display:inline-block; */
+    display: flex;
+}

@@ -1,10 +1,27 @@
 import React, { Component } from "react";
 import AddBookClub from "../../components/AddBookClub";
-import YourBookClub from "../../components/yourBookClub";
-import SavedBooks from "../../components/savedBooks";
+import SearchBookClub from "../../components/searchBookClub";
+// import SavedBooks from "../../components/savedBooks";
 import Wrapper from "../../components/Wrapper";
 
 class BookClub extends Component {
+
+
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      clubName: "",
+      bookName: "",
+      meetingDate: ""
+    };
+
+    // this.handleChange = this.handleChange.bind(this);
+    // this.handleSubmit = this.handleSubmit.bind(this);
+  }
+
+
+
   render() {
     return (
       <div>
@@ -14,8 +31,8 @@ class BookClub extends Component {
       
       <Wrapper>
         <AddBookClub />
-        <SavedBooks />
-        <YourBookClub />
+       <br/>    <br/>    
+        <SearchBookClub />
       </Wrapper>
       </div>
     );

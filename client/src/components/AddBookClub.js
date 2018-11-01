@@ -38,13 +38,15 @@ export default class NameForm extends React.Component {
         this.state.meetingDate
     );
 
-    // const data = new FormData(event.target);
-    // const data = document.getElementById("addClubForm");
-    // let formData= new FormData(data);
-    let formData = { clubName: this.state.clubName, bookName : this.state.bookName, meetingDate : this.state.meetingDate}
+    let formData = {
+      clubName: this.state.clubName,
+      bookName: this.state.bookName,
+      meetingDate: this.state.meetingDate
+    };
 
     console.log(formData);
-    myAPI.postClubs(formData)
+    myAPI
+      .postClubs(formData)
       .then(function(response) {
         console.log(response);
       })
@@ -56,40 +58,44 @@ export default class NameForm extends React.Component {
 
   render() {
     return (
-      <form idname="addClubForm" onSubmit={this.handleSubmit}>
-        <label>
-          Club Name:
-          <input
-            type="text"
-            value={this.state.clubName}
-            onChange={this.handleChange}
-            name="clubName"
-          />
-        </label>
-        <br />
-        <label>
-          Selected Book:
-          <input
-            type="text"
-            value={this.state.bookName}
-            onChange={this.handleChange}
-            name="bookName"
-          />
-        </label>
-        <br />
-        <label>
-          Meeting Date:
-          <input
-            type="text"
-            value={this.state.meetingDate}
-            onChange={this.handleChange}
-            name="meetingDate"
-          />
-        </label>
-        <br />
+      <div>
+        <h1> Add a Book Club</h1>
+        <form idname="addClubForm" onSubmit={this.handleSubmit}>
+          <label>
+            Club Name: {"    "}
+            <input
+              type="text"
+              value={this.state.clubName}
+              onChange={this.handleChange}
+              name="clubName"
+            />
+          </label>
+          <br />
+          <label>
+            Selected Book:
+            <input
+              type="text"
+              value={this.state.bookName}
+              onChange={this.handleChange}
+              name="bookName"
+            />
+          </label>
+          <br />
+          <label>
+            Meeting Date& Time:
+            <input
+              type="text"
+              value={this.state.meetingDate}
+              onChange={this.handleChange}
+              placeholder="Second Tuesdays 5pm CST"
+              name="meetingDate"
+            />
+          </label>
+          <br />
 
-        <input type="submit" value="Submit" />
-      </form>
+          <input type="submit" value="Submit" className="btn btn-success"/>
+        </form>
+      </div>
     );
   }
 }
