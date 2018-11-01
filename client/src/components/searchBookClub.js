@@ -8,7 +8,7 @@ export default class SearchClubForm extends React.Component {
 
     this.state = {
       searchClubName: "",
-      searchByBookNameByBook: "",
+      searchByBookNameByBook: ""
     };
 
     this.handleChange = this.handleChange.bind(this);
@@ -30,53 +30,102 @@ export default class SearchClubForm extends React.Component {
     event.preventDefault();
 
     //IF CLUBNAME IS TRUE THEN DO THIS OR DO THIS (LET BOOKDEFAULT="HARRY POTTER")
-    
+    // needs to take input
 
+    let formData2 = {
+      searchClubName: this.state.searchClubName,
+      searchByBookNameByBook: this.state.searchByBookNameByBook
+    };
 
+    // console.log("hello", formData2.searchClubName);
+    console.log("hello2", formData2.searchByBookNameByBook);
 
+    if (!formData2.searchByBookNameByBook) {
+      myAPI
+        .getClubs()
+        .then(function(response) {
+          let responseArray = response.data;
+          let intro = "Your Book Club: ";
+          console.log(responseArray);
+          let i = 0;
+          responseArray.forEach(element => {
+            if (!element.clubName) {
+              element.clubName = "Harry Potter";
+            }
 
-    myAPI
-      .getClubs()
-      .then(function(response) {
-        let responseArray = response.data;
-        let intro = "Your Book Club: "
-        console.log(responseArray);
-        let i = 0;
-        responseArray.forEach(element => {
-          let iDiv = document.createElement('div');
-           
-          iDiv.id = 'block'+i;
-          // iDiv.className = 'block';
-          // iDiv.className = 'col s12';
-          document.getElementById("display_clubs").appendChild(iDiv);
-          let s =  document.getElementById('block'+i);
-          i++;
-          s.append(intro);
-          s.append(element.clubName);
-          s.append(element.bookName);
-          s.append(element.meetingDate);
-          
+            if (element.clubName.includes(formData2.searchClubName)) {
+              let iDiv = document.createElement("div");
+              iDiv.id = "block" + i;
+              document.getElementById("display_clubs").appendChild(iDiv);
+
+              let s = document.getElementById("block" + i);
+              i++;
+              s.append(intro);
+              s.append(element.clubName);
+              s.append(element.bookName);
+              s.append(element.meetingDate);
+            }
+          });
+        })
+        .catch(function(error) {
+          console.log(error);
         });
-        
+    }
+//end of the search by club name
+    else { // search by book name
 
-        // sort
 
 
-        // document.getElementById("display_clubs").append("This is where all the clubs come");
 
-      })
-      .catch(function(error) {
-        console.log(error);
-        //Perform action based on error
-      });
+      myAPI
+        .getClubs()
+        .then(function(response) {
+          let responseArray = response.data;
+          let intro = "Your Book Club: ";
+          console.log(responseArray);
+          let i = 0;
+          responseArray.forEach(element => {
+            if (!element.bookName) {
+              element.bookName = "Potter";
+            }
+
+            if (element.bookName.includes(formData2.searchByBookNameByBook)) {
+              let iDiv = document.createElement("div");
+              iDiv.id = "block" + i;
+              document.getElementById("display_clubs").appendChild(iDiv);
+
+              let s = document.getElementById("block" + i);
+              i++;
+              s.append(intro);
+              s.append(element.clubName);
+              s.append(element.bookName);
+              s.append(element.meetingDate);
+            }
+          });
+        })
+        .catch(function(error) {
+          console.log(error);
+        });
+
+
+
+
+
+
+    }
+
+
+
+
+
   }
 
   render() {
     return (
       <div>
         <h1> Search a Book Club</h1>
-        <form idname="searchClubForm"  onSubmit={this.handleSubmit}>
-       
+        <form idname="searchClubForm" onSubmit={this.handleSubmit}>
+          <p>tHingS arE CasE sEnsItIVe oUt here:</p>
           <label>
             Search Club Name: {"    "}
             <input
@@ -100,11 +149,9 @@ export default class SearchClubForm extends React.Component {
 
           <br />
 
-          <input type="submit" value="Submit" className="btn btn-success"/>
+          <input type="submit" value="Submit" className="btn btn-success" />
         </form>
-        <div id="display_clubs" className="row">
-      
-        </div>
+        <div id="display_clubs" className="row" />
       </div>
     );
   }
