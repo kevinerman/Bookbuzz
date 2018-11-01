@@ -17,12 +17,12 @@ class SearchResultContainer extends Component {
     this.searchBooks("kittens");
   }
 
-  searchBooks = query => {
-    API.search(query)
-      .then(res => this.setState({ results: res.data.items }),
-        console.log(this.state.results))
-    // .catch(err => console.log(err));
-  };
+  // searchBooks = query => {
+  //   API.search(query)
+  //     .then(res => this.setState({ results: res.data.items }),
+  //       console.log(this.state.results))
+  //   // .catch(err => console.log(err));
+  // };
 
 
 
