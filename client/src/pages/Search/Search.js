@@ -17,7 +17,11 @@ var thumbnailCheck = function (result) {
 
 class Search extends Component {
   state = {
-    labels: [{ id: "Topic", val: "" }],
+    labels: [
+      { id: "Title", val: "" },
+      { id: "Author", val: ""},
+      { id: "Subject", val: ""}
+  ],
     results: [],
     showResults: false,
     error: ""
@@ -36,13 +40,15 @@ class Search extends Component {
     event.preventDefault();
     // console.log("I am in handleform submit in searchjs line 32") //working
     
-    googleAPI.getBooks(this.state.labels[0].val)
+    googleAPI.getBooks(this.state.labels)
       .then(res => {
         console.log(res); //res.data
         console.log("search js", res.data.items);
         this.setState({ 
           labels: [
-            { id: "Title", val: "" }
+            { id: "Title", val: "" },
+            { id: "Author", val: ""},
+            { id: "Subject", val: ""}
           ],
           results: res.data.items,
           showResults: true 
