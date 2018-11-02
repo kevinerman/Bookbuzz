@@ -71,11 +71,9 @@ export default class SearchClubForm extends React.Component {
           console.log(error);
         });
     }
-//end of the search by club name
-    else { // search by book name
-
-
-
+    //end of the search by club name
+    else {
+      // search by book name
 
       myAPI
         .getClubs()
@@ -106,18 +104,7 @@ export default class SearchClubForm extends React.Component {
         .catch(function(error) {
           console.log(error);
         });
-
-
-
-
-
-
     }
-
-
-
-
-
   }
 
   render() {
@@ -149,7 +136,7 @@ export default class SearchClubForm extends React.Component {
 
           <br />
 
-          <input type="submit" value="Submit" className="btn btn-success" />
+          <input type="submit" value="Submit" className="btn buttonClubCreate" />
         </form>
         <div id="display_clubs" className="row" />
       </div>

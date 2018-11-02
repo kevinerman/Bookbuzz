@@ -14,3 +14,55 @@ form {
 /* #block {
     display:inline-block;
 } */
+
+
+.buttonClubCreate {
+    outline:none;
+    height: 40px;
+    text-align: center;
+    width: 130px;
+    border-radius:40px;
+    background: #fff;
+    border: 2px solid  #8B4513;
+    color:#8B4513;
+    letter-spacing:1px;
+    text-shadow:0;
+    font-size: 12px; 
+    font-weight:bold;
+
+    cursor: pointer;
+    transition: all 0.25s ease;
+
+  }
+
+  .buttonClubCreate :hover {
+    color:white;
+    background: #8B4513;
+  }
+  .buttonClubCreate :active {
+    letter-spacing: 2px;
+    letter-spacing: 2px ;
+  }
+  .buttonClubCreate :after {
+    content:"SUBMIT";
+  } 
+
+
+  .buttonDelete {
+    outline:none;
+    height: 40px;
+    text-align: center;
+    width: 130px;
+    border-radius:40px;
+    background: #fff;
+    border: 2px solid  red;
+    color:red;
+    letter-spacing:1px;
+    text-shadow:0;
+    font-size: 12px; 
+    font-weight:bold;
+    cursor: pointer;
+    transition: all 0.25s ease;
+
+
+  }

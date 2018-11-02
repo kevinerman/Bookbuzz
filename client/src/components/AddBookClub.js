@@ -44,6 +44,9 @@ export default class NameForm extends React.Component {
       meetingDate: this.state.meetingDate
     };
 
+
+    //validate 
+
     console.log(formData);
     myAPI
       .postClubs(formData)
@@ -93,7 +96,7 @@ export default class NameForm extends React.Component {
           </label>
           <br />
 
-          <input type="submit" value="Submit" className="btn btn-success"/>
+          <input  type="submit" value="Submit" className="btn buttonClubCreate"/>
         </form>
       </div>
     );
