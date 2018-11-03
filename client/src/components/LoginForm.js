@@ -1,4 +1,6 @@
 import React, { Component } from "react";
+import Auth from "../Auth/Auth";
+
 // import { Link } from "react-router-dom";
 // import axios from "axios";
 
@@ -7,7 +9,7 @@ export default class LoginForm extends Component {
     super();
     this.state = {
       username: "",
-      password: ""
+      password: "" 
     };
   }
 
@@ -21,52 +23,49 @@ export default class LoginForm extends Component {
 
   handleSubmitForm(event) {
     event.preventDefault();
+    const auth = new Auth();
+    // console.log(this);
+    console.log(auth);
+    // const isAuthenticated = this.props.auth;
+
+    auth.login();
     //axios will come here to check log in and use ternary operator to go to the next page.
-    alert("We need to check for log in and redirect to the route");
     // <Redirect to="/home">Login</Redirect>
   }
+
   render() {
+        // const isAuthenticated = this.props.auth;
+
+    console.log(this.props.auth);
+
+
     return (
       <div>
         <div className="text-center">
           <h1> Log in! </h1>
-          <p> The email address will be your username </p>
         </div>
         <form>
-          <div className="form-group">
-            <label for="exampleInputEmail1">Email address</label>
-            <input
-              type="email"
-              name="username"
-              className="form-control"
-              id="username"
-              aria-describedby="emailHelp"
-              placeholder="Enter email"
-              onChange={this.handleUsernameChanged.bind(this)}
-            />
-            <small id="emailHelp" className="form-text text-muted">
-              We'll never share your email with anyone else.
-            </small>
-          </div>
-          <div className="form-group">
-            <label for="password">Password</label>
-            <input
-              type="password"
-              name="password"
-              className="form-control"
-              id="password"
-              placeholder="Password"
-              onChange={this.handlePasswordChanged.bind(this)}
-            />
-          </div>
           <br />
-          <button
-            type="submit"
-            className="btn btn-outline-warning btn-lg btn-block"
-            onClick={this.handleSubmitForm}
-          >
-            Submit
-          </button>
+          {
+              (!localStorage.access_token) ? (
+                  <button
+                  type="submit"
+                  className="btn btn-outline-warning btn-lg btn-block"
+                  onClick={this.handleSubmitForm}
+                  >
+                    Log In
+                  </button>
+                
+              ):(
+                  <button
+                  type="submit"
+                  className="btn btn-outline-warning btn-lg btn-block"
+                  onClick={this.handleSubmitForm}
+                  >
+                    Log Out
+                  </button>
+                )
+            }
         </form>
         <br /> <br />   <br /> 
         <div className="text-center">

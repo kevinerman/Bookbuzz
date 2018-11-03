@@ -10,6 +10,15 @@ import Search from "./pages/Search/Search";
 import SavedBooks from './pages/SavedBooks/SavedBooks';
 import Profile from './pages/Profile/Profile'
 import './App.css';
+import Auth from './Auth/Auth';
+
+const auth = new Auth();
+
+const handleAuthentication = (nextState, replace) => {
+  if (/access_token|id_token|error/.test(nextState.location.hash)) {
+    auth.handleAuthentication();
+  }
+}
  
 
 const App = () => (
@@ -19,6 +28,11 @@ const App = () => (
         <Switch>
           <Route exact path="/" component={Login} />
           <Route exact path="/" component={Search} />
+          <Route path="/callback" component={(props) => {
+            handleAuthentication(props);
+            console.log("props at callback: ", props);
+            return <Profile/>
+          }}/>
           <Route exact path="/login" component={Login} />
           <Route exact path="/about" component={About} />
           <Route exact path="/bookclub" component={BookClub} />
