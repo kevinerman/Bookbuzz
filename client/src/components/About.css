@@ -1,0 +1,10 @@
+.card-img-top {
+    height: 200px;
+    width: 160px
+}
+
+.card {
+    background-color: lightblue;
+    padding: 10px;
+    font-family: 'Courgette', cursive;
+}

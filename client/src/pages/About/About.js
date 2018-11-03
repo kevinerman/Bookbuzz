@@ -1,7 +1,12 @@
 import React, { Component } from "react";
 // import About from "../../components/About";
 import Wrapper from "../../components/Wrapper";
-import "../../components/books.css";
+import Rion from "./images/rion.jpg";
+import Joe from "./images/joe.jpg";
+import Arnab from "./images/arnab.jpg";
+import Kevin from "./images/kevin.jpg";
+import "../../components/About.css"
+
 
 
 class Home extends Component {
@@ -25,48 +30,55 @@ class Home extends Component {
             </p>
 
           </div>
-     
-          <div className="stack">
-            <div className="book"></div>
-            <div className="book"></div>
-            <div className="book"></div>
-            <div className="book"></div>
-            <div className="book"></div>
-          </div>
+          <hr />
+          <hr />
+          <hr />
+          <hr />
+          <hr />
+          <hr />
+          <hr />
+          <hr />
+          <hr />
+          <hr />
+          <hr />
+          <hr />
           
           <h3 className="text-center">Our Developers</h3>
           <div className="card-deck">
             <div className="card">
-              <img className="card-img-top" src="http://i1076.photobucket.com/albums/w450/kelzzxo/profilepic_zpsbp8o9epx.jpg" alt="Arnab" />
+              <img className="card-img-top" src={Arnab} alt="Arnab" />
               <div className="card-body">
                 <h5 className="card-title">Arnab</h5>
-                <p className="card-text">LinkedIn: </p>
+                {/* <p className="card-text">LinkedIn:  </p> */}
               </div>
 
             </div>
             <div className="card">
-              <img className="card-img-top" src="http://i1076.photobucket.com/albums/w450/kelzzxo/kevin_zpsjvzfbruu.jpg" alt="Kevin" />
+              <img className="card-img-top" src={Kevin} alt="Kevin" />
               <div className="card-body">
                 <h5 className="card-title">Kevin</h5>
-                <p className="card-text">LinkedIn: </p>
+                {/* <p className="card-text">LinkedIn: </p> */}
+                <ion-icon name="logo-linkedin"></ion-icon>
               </div>
 
             </div>
           </div>
           <div className="card-deck">
             <div className="card">
-              <img className="card-img-top" src="http://i1076.photobucket.com/albums/w450/kelzzxo/16266327_1729711450388349_6902890598876939862_n_zpsyms5s4ey.jpg" alt="Rion" />
+              <img className="card-img-top" src={Rion} alt="Rion" />
               <div className="card-body">
                 <h5 className="card-title">Rion</h5>
-                <p className="card-text">LinkedIn: </p>
+                {/* <p className="card-text">LinkedIn: </p> */}
+                <ion-icon name="logo-linkedin"></ion-icon>
               </div>
 
             </div>
             <div className="card">
-              <img className="card-img-top" src="http://i1076.photobucket.com/albums/w450/kelzzxo/673f32bf-6cef-4457-9fc3-c81db7ac45c7_zpsfxabxoj6.jpg" alt="Joe" />
+              <img className="card-img-top" src={Joe} alt="Joe" />
               <div className="card-body">
                 <h5 className="card-title">Joe</h5>
-                <p className="card-text"> LinkedIn :</p>
+                {/* <p className="card-text"> LinkedIn: </p> */}
+                <ion-icon name="logo-linkedin"></ion-icon>
               </div>
 
             </div>

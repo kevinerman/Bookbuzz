@@ -4,58 +4,30 @@ import React from "react";
 const Profile = props => (
   <div>
     <div className="text-center">
-      <h1>Welcome Back </h1>
-      <p>Update your Info</p>
-    </div>
-    <form>
-      <div className="form-group">
-        <label for="exampleInputEmail1">Email address</label>
-        <input
-          type="email"
-          name="username"
-          className="form-control"
-          id="username"
-          aria-describedby="emailHelp"
-          placeholder="Enter email"
-          
-        />
-        <small id="emailHelp" className="form-text text-muted">
-          We'll never share your email with anyone else.
-            </small>
-      </div>
-      <div className="form-group">
-        <label for="password">Password</label>
-        <input
-          type="password"
-          name="password"
-          className="form-control"
-          id="password"
-          placeholder="Password"
-         
-        />
-      </div>
-      <br />
-      <button
-        type="submit"
-        className="btn btn-outline-warning btn-lg btn-block"
-        
-      >
-        Submit
-          </button>
-    </form>
+      <h1>Welcome Back (UserName) </h1>
+      {/* <p>Update your Info</p> */}
+  
 
+    </div>
 
     <br /> <br />   <br />
 
 
     <div className="text-center">
       <h1> Books & Clubs </h1>
-      <p>Here are you're current books and clubs </p>
     </div>
+
     <ol>
-      <li>1.</li>
-      <li>2.</li>
-      <li>3.</li>
+      <h3>Books</h3>
+      <li> Book 1 </li>
+      <li> Book 2 </li>
+      <li> Book 3 </li>
+    </ol>
+    <ol>
+      <h3>Clubs</h3>
+      <li> Club1 </li>
+      <li> Club2 </li>
+      <li> Club3 </li>
     </ol>
 
 

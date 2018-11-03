@@ -6,6 +6,7 @@ import BookScraped from '../../components/BookScraped/BookScraped';
 import googleAPI from "../../utils/googleAPI";
 import myAPI from "../../utils/API";
 import Wrapper from "../../components/Wrapper";
+import "../../components/books.css";
 
 var thumbnailCheck = function (result) {
   if (!result.volumeInfo.imageLinks) {
@@ -98,6 +99,18 @@ class Search extends Component {
         <hr />
         <Wrapper>
         <Card title="Search for Books">
+        <div className="stack">
+            <div className="book"></div>
+            <div className="book"></div>
+            <div className="book"></div>
+            <div className="book"></div>
+            <div className="book"></div>
+          </div>
+       
+       
+        <hr />
+
+        
         <SearchForm 
           // submit={this.handleFormSubmit} 
           changed={this.handleInputChange}
