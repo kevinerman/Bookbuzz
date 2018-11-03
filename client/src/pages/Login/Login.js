@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import LoginForm from "../../components/LoginForm";
 import Wrapper from "../../components/Wrapper";
-
+import Bee from "../../components/Bee";
 
 class Login extends Component {
   render() {
@@ -10,9 +10,12 @@ class Login extends Component {
         <hr />
         <hr />
         <hr />
-        <Wrapper>
-        <LoginForm />
         
+        <Wrapper>
+        <Bee/>
+        
+        <LoginForm />
+       
          </Wrapper>
       </div>
     );
