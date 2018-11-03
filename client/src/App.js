@@ -33,6 +33,7 @@ const App = () => (
             console.log("props at callback: ", props);
             return <Profile/>
           }}/>
+          <Route exact path="/callback" component={Profile} />
           <Route exact path="/login" component={Login} />
           <Route exact path="/about" component={About} />
           <Route exact path="/bookclub" component={BookClub} />
