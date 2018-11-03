@@ -19,32 +19,35 @@ export default class BookClubPage extends Component {
         <div className="row">
           <div
             className="col s6 m6 rounded"
-            style={{ background: "pink", color: "#8b4513" }}
+            style={{background: "light blue", color: "#8b4513"}}
           >
-            <p> Discussion Page </p>
+            <p style={{color: "black"}}> Welcome to Discussion Page </p>
 
-            <div style={{ color: "pink" }}>
-              <p> hello</p>
+            <div style={{color: "pink"}}>
+             
 
               <form>
                 <div className="form-group">
-                  <label for="exampleInputEmail1">Email address</label>
+                  <label for="postDiscussion">Post Discussion</label>
                   <input
                     type="textbox"
-                    name="username"
+                    name="postDiscussion"
                     className="form-control"
-                    id="username"
+                    id="postDiscussion"
                     aria-describedby="emailHelp"
-                    placeholder="Enter some text"
+                    placeholder="Post a comment or discussion here"
                     // onChange={this.handleUsernameChanged.bind(this)}
                   />
-                  
                 </div>
                 <br />
 
-          <input  type="submit" value="Submit" className="btn buttonClubCreate"/>
+                <input
+                  type="submit"
+                  value="Post Now!"
+                  className="btn buttonClubCreate"
+                />
               </form>
-              <br/>
+              <br />
             </div>
           </div>
         </div>

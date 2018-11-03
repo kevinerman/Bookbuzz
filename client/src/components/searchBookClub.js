@@ -26,19 +26,22 @@ export default class SearchClubForm extends React.Component {
     });
   }
 
+ 
+
   handleSubmit(event) {
     event.preventDefault();
 
+    document.getElementById("display_clubs").innerHTML = "";
     //IF CLUBNAME IS TRUE THEN DO THIS OR DO THIS (LET BOOKDEFAULT="HARRY POTTER")
     // needs to take input
-
+    
     let formData2 = {
       searchClubName: this.state.searchClubName,
       searchByBookNameByBook: this.state.searchByBookNameByBook
     };
 
     // console.log("hello", formData2.searchClubName);
-    console.log("hello2", formData2.searchByBookNameByBook);
+    // console.log("hello2", formData2.searchByBookNameByBook);
 
     if (!formData2.searchByBookNameByBook) {
       myAPI
@@ -48,22 +51,33 @@ export default class SearchClubForm extends React.Component {
           let intro = "Your Book Club: ";
           console.log(responseArray);
           let i = 0;
+
           responseArray.forEach(element => {
             if (!element.clubName) {
               element.clubName = "Harry Potter";
             }
-
+           
             if (element.clubName.includes(formData2.searchClubName)) {
               let iDiv = document.createElement("div");
               iDiv.id = "block" + i;
               document.getElementById("display_clubs").appendChild(iDiv);
-
               let s = document.getElementById("block" + i);
               i++;
               s.append(intro);
               s.append(element.clubName);
               s.append(element.bookName);
               s.append(element.meetingDate);
+
+              var newBtn = document.createElement("button"); 
+              var newContent = document.createTextNode("Go to clubpage"); 
+              newBtn.appendChild(newContent);  
+              newBtn.setAttribute("class", "buttonClubCreate");
+
+              newBtn.id="clubnumber"+i;
+
+              s.appendChild(newBtn);
+
+              
             }
           });
         })

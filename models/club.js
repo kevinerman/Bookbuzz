@@ -5,7 +5,8 @@ const ClubSchema = new Schema({
   clubName: { type: String, required: false },
   bookName: { type: String, required: false },
   meetingDate: {type: String, required: false},
-  clubMembers: [{type: String, required: false}]
+  clubMembers: [{type: String, required: false}],
+  discussion: [{type:String,required: false}]
 });
 
 const Club = mongoose.model("Club", ClubSchema);

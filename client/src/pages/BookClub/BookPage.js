@@ -1,7 +1,5 @@
 import React, { Component } from "react";
-import AddBookClub from "../../components/AddBookClub";
-import SearchBookClub from "../../components/searchBookClub";
-
+import YourBookClubPage from "../../components/YourBookClub"; // will be removed from here to its page
 import Wrapper from "../../components/Wrapper";
 
 class BookClub extends Component {
@@ -28,10 +26,7 @@ class BookClub extends Component {
         <hr />
       
       <Wrapper>
-        <AddBookClub />
-       <br/>    <br/>    
-        <SearchBookClub />
-        
+        <YourBookClubPage/>
       </Wrapper>
       </div>
     );
