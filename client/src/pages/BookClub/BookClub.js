@@ -1,10 +1,25 @@
 import React, { Component } from "react";
 import AddBookClub from "../../components/AddBookClub";
-import YourBookClub from "../../components/yourBookClub";
-import SavedBooks from "../../components/savedBooks";
+import SearchBookClub from "../../components/searchBookClub";
+import BookClubPage from "../../components/BookClub"; // will be removed from here to its page
 import Wrapper from "../../components/Wrapper";
 
 class BookClub extends Component {
+
+
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      clubName: "",
+      bookName: "",
+      meetingDate: ""
+    };
+
+  }
+
+
+
   render() {
     return (
       <div>
@@ -14,8 +29,9 @@ class BookClub extends Component {
       
       <Wrapper>
         <AddBookClub />
-        <SavedBooks />
-        <YourBookClub />
+       <br/>    <br/>    
+        <SearchBookClub />
+        <BookClubPage/>
       </Wrapper>
       </div>
     );

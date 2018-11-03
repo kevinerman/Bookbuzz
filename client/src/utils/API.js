@@ -17,5 +17,13 @@ export default {
     saveBooks: function(BookData) {
       console.log("inside the save article in API js");
       return axios.post("/api/books/", BookData);
+    },
+    postClubs: function(ClubData){
+      console.log("inside the postClubs in API js");
+      return axios.post("/api/bookclubs/", ClubData);
+    },
+    getClubs: function(){
+      console.log("inside the getClubs in API js");
+      return axios.get("/api/bookclubs/");
     }
   };

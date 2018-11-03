@@ -1,94 +1,104 @@
 import React from "react";
-import './styles.css';
+import "./styles.css";
+import myAPI from "../utils/API";
 
-const AddClub = props => (
-  <div>
-    <form>
-      {/* <h1>Add Book Club</h1> */}
-      <div className="form-group">
-        <label for="bookclubname">Book Club Name</label>
-        <input
-          type="text"
-          className="form-control font-style"
-          name="bookclubname"
-          id="bookclubname"
-          placeholder="Jane Austen Book Club"
-        />
-      </div>
-      <div className="form-group">
-        <label for="bookclubbook">Book Name</label>
-        <input
-          type="text"
-          className="form-control font-style"
-          name="bookclubbook"
-          id="bookclubbook"
-          placeholder="Jane Austen Secrets"
-        />
-      </div>
-      <div className="form-group font-style">
-        <label for="bookclubauthor">Author Name</label>
-        <input
-          type="text"
-          className="form-control font-style"
-          name="bookclubauthor"
-          id="bookclubauthor"
-          placeholder="Jane Austen"
-        />
-      </div>
-      <div className="form-group">
-        <label for="exampleFormControlTextarea1">Important Notes</label>
-        <textarea
-          className="form-control font-style"
-          id="exampleFormControlTextarea1"
-          rows="2"
-        />
-      </div>
-      <div className="form-group">
-        <label for="start-time">Start Date/time:</label>
-        <input
-          type="datetime-local"
-          id="start-time"
-          className="form-control font-style"
-          name="party-time"
-          value="2018-06-12T19:30"
-          min="2018-06-07T00:00"
-          max="2020-06-14T00:00"
-        />
-      </div>
-      <div className="form-group">
-      <label for="start-time">End Date/time:</label>
-        <input
-          type="datetime-local"
-          id="end-time"
-          className="form-control"
-          name="end-time"
-          value="2018-06-12T19:30"
-          min="2018-11-07T00:00"
-          max="2020-06-14T00:00"
-        />
-      </div>
+export default class NameForm extends React.Component {
+  constructor(props) {
+    super(props);
 
-      <button
-        // onClick={props.handleFormSubmit}
-        className="btn btn-outline-warning btn-lg btn-block">
-        Add Club
-      </button>
+    this.state = {
+      clubName: "",
+      bookName: "",
+      meetingDate: ""
+    };
+
+    this.handleChange = this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
+  }
+
+  handleChange(event) {
+    // this.setState({ value: event.target.value });
+    const target = event.target;
+    const value = target.value;
+    const name = target.name;
+
+    this.setState({
+      [name]: value
+    });
+  }
+
+  handleSubmit(event) {
+    event.preventDefault();
+    alert(
+      "' book club name was submitted: " +
+        this.state.clubName +
+        " book name " +
+        this.state.bookName +
+        " meeting date and time " +
+        this.state.meetingDate
+    );
+
+    let formData = {
+      clubName: this.state.clubName,
+      bookName: this.state.bookName,
+      meetingDate: this.state.meetingDate
+    };
 
 
-    </form>
+    //validate 
 
-    
-    <div>
-      1500s, when an unknown printer took a galley of type and scrambled it to
-      make a type specimen book. It has survived not only five centuries, but
-      also the leap into electronic typesetting, remaining essentially
-      unchanged. It was popularised in the 1960s with the release of Letraset
-      sheets containing Lorem Ipsum passages, and more recently with desktop
-      publishing software like Aldus PageMaker including versions of Lorem
-      Ipsum.
-    </div>
-    
-  </div>
-);
+    console.log(formData);
+    myAPI
+      .postClubs(formData)
+      .then(function(response) {
+        console.log(response);
+      })
+      .catch(function(error) {
+        console.log(error);
+        //Perform action based on error
+      });
+  }
 
-export default AddClub;
+  render() {
+    return (
+      <div>
+        <h1> Add a Book Club</h1>
+        <form idname="addClubForm" onSubmit={this.handleSubmit}>
+          <label>
+            Club Name: {"    "}
+            <input
+              type="text"
+              value={this.state.clubName}
+              onChange={this.handleChange}
+              name="clubName"
+            />
+          </label>
+          <br />
+          <label>
+            Selected Book:
+            <input
+              type="text"
+              value={this.state.bookName}
+              onChange={this.handleChange}
+              name="bookName"
+            />
+          </label>
+          <br />
+          <label>
+            Meeting Date& Time:
+            <input
+              type="text"
+              value={this.state.meetingDate}
+              onChange={this.handleChange}
+              placeholder="Second Tuesdays 5pm CST"
+              name="meetingDate"
+            />
+          </label>
+          <br />
+
+          <input  type="submit" value="Submit" className="btn buttonClubCreate"/>
+        </form>
+      </div>
+    );
+  }
+}
