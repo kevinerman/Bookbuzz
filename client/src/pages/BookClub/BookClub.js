@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import AddBookClub from "../../components/AddBookClub";
 import SearchBookClub from "../../components/searchBookClub";
-// import SavedBooks from "../../components/savedBooks";
+import BookClubPage from "../../components/BookClub"; // will be removed from here to its page
 import Wrapper from "../../components/Wrapper";
 
 class BookClub extends Component {
@@ -16,8 +16,6 @@ class BookClub extends Component {
       meetingDate: ""
     };
 
-    // this.handleChange = this.handleChange.bind(this);
-    // this.handleSubmit = this.handleSubmit.bind(this);
   }
 
 
@@ -33,6 +31,7 @@ class BookClub extends Component {
         <AddBookClub />
        <br/>    <br/>    
         <SearchBookClub />
+        <BookClubPage/>
       </Wrapper>
       </div>
     );
