@@ -26,11 +26,9 @@ export default class LoginForm extends Component {
     const auth = new Auth();
     // console.log(this);
     console.log(auth);
+    auth.login();
     // const isAuthenticated = this.props.auth;
 
-    auth.login();
-    //axios will come here to check log in and use ternary operator to go to the next page.
-    // <Redirect to="/home">Login</Redirect>
   }
 
   render() {
