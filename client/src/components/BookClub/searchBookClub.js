@@ -1,7 +1,8 @@
 import React from "react";
 import "../styles.css";
 import myAPI from "../../utils/API";
-import { BrowserRouter as Router, Route, Switch, Link } from "react-router-dom";
+
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 // import Button from './Button/Button';
 import BookClubPage from "./YourBookClub";
 
@@ -47,112 +48,105 @@ export default class SearchClubForm extends React.Component {
     };
 
     if (!formData2.searchByBookNameByBook) {
-      myAPI
-        .getClubs()
-        .then(function(response) {
-          let responseArray = response.data;
-          let intro = "Your Book Club: ";
-          console.log(responseArray);
-          let i = 0;
+       
+      myAPI.searchClubsByName(formData2).then(res => {
+        console.log(res.data); //array of data
+        let i = 0;
+        res.data.forEach(element => {
+          console.log(element);
 
-          responseArray.forEach(element => {
-            if (!element.clubName) {
-              element.clubName = "Harry Potter";
-            }
+          let iDiv = document.createElement("div");
+          iDiv.id = "block" + i;
+          document.getElementById("display_clubs").appendChild(iDiv);
 
-            if (element.clubName.includes(formData2.searchClubName)) {
-              let iDiv = document.createElement("div");
-              iDiv.id = "block" + i;
-              document.getElementById("display_clubs").appendChild(iDiv);
-              let s = document.getElementById("block" + i);
-              i++;
-              s.append(intro);
-              s.append(element.clubName);
-              s.append(element.bookName);
-              s.append(element.meetingDate);
+          let s = document.getElementById("block" + i);
+          i++;
+          // add information of the matching clubs
+          s.append("Your Book Club: ");
+          s.append(element.clubName);
+          s.append(".  Book Discussed: ");
+          s.append(element.bookName);
+          s.append(".  Meeting Date/Frequency: ");
+          s.append(element.meetingDate);
 
-              var newBtn = document.createElement("button");
-              var newContent = document.createTextNode("Go to clubpage");
-              newBtn.appendChild(newContent);
-              newBtn.setAttribute("class", "buttonClubCreate");
-              newBtn.id = element._id;
+          //dynamic button added to each search array content
+          var newBtn = document.createElement("button");
+          var newContent = document.createTextNode("Join Bookclub!");
+          newBtn.appendChild(newContent);
+          newBtn.setAttribute("class", "buttonClubCreate");
+          newBtn.id = element._id;
+          newBtn.value = element._id;
+          s.appendChild(newBtn);
+          s.append(`
+              
+              `);
 
-              s.appendChild(newBtn);
-              newBtn.onclick = function() {
-                console.log("hello"); // add a function to route to the elemenet.id
-                
-              };
+          newBtn.onclick = function(event) {
+            console.log("hello add me to club please", event.target.id); // add a function to route to the elemenet.id
 
-              // <Button title='Go to ClubPage' clicked={(event) => this.action(event, element._id)} />
-            }
-          });
-        })
-        .catch(function(error) {
-          console.log(error);
+            myAPI.updateClubs(element)
+            .then( function(response) {
+              console.log("inside add club update: ", response);
+            })
+            .catch(function(error) {
+              console.log(error);
+            });
+          };
         });
+      });
+
+
+
+
+
     }
     //end of the search by club name
     else {
-      // search by book name
+      myAPI.searchClubs(formData2).then(res => {
+        console.log(res.data); //array of data
+        let i = 0;
+        res.data.forEach(element => {
+          console.log(element);
 
-      myAPI
-        .getClubs()
-        .then(function(response) {
-          let responseArray = response.data;
-          let intro = "Your Book Club: ";
-          console.log(responseArray);
-          let i = 0;
-          responseArray.forEach(element => {
-            if (!element.bookName) {
-              element.bookName = "Potter";
-            }
+          let iDiv = document.createElement("div");
+          iDiv.id = "block" + i;
+          document.getElementById("display_clubs").appendChild(iDiv);
 
-            if (element.bookName.includes(formData2.searchByBookNameByBook)) {
-              console.log("*&#*&#*&#", element._id);
-              let iDiv = document.createElement("div");
-              iDiv.id = "block" + i;
-              document.getElementById("display_clubs").appendChild(iDiv);
+          let s = document.getElementById("block" + i);
+          i++;
+          // add information of the matching clubs
+          s.append("Your Book Club: ");
+          s.append(element.clubName);
+          s.append(".  Book Discussed: ");
+          s.append(element.bookName);
+          s.append(".  Meeting Date/Frequency: ");
+          s.append(element.meetingDate);
 
-              let s = document.getElementById("block" + i);
-              i++;
-              s.append(intro);
-              s.append(element.clubName);
-              s.append(element.bookName);
-              s.append(element.meetingDate);
+          //dynamic button added to each search array content
+          var newBtn = document.createElement("button");
+          var newContent = document.createTextNode("Join Bookclub!");
+          newBtn.appendChild(newContent);
+          newBtn.setAttribute("class", "buttonClubCreate");
+          newBtn.id = element._id;
+          newBtn.value = element._id;
+          s.appendChild(newBtn);
+          s.append(`
+              
+              `);
 
-              var newBtn = document.createElement("button");
-              var newContent = document.createTextNode("Add Bookclub!");
-              newBtn.appendChild(newContent);
-              newBtn.setAttribute("class", "buttonClubCreate");
+          newBtn.onclick = function(event) {
+            console.log("hello add me to club please", event.target.id); // add a function to route to the elemenet.id
 
-              // newBtn.onclick(console.log("hello"));
-              newBtn.id = element._id;
-
-              // newBtn.setAttribute("value", element._id);
-              // newBtn.setAttribute("to", `/bookclub/` + element._id);
-              newBtn.value = element._id;
-
-              // let clubLink = <Link to = "/bookclub2/"   />
-              // clubLink.to= `/bookclub/` + element._id ;
-
-              s.appendChild(newBtn);
-              // newBtn.addEventListener("click", console.log("hello"));
-
-              newBtn.onclick = function() {
-                console.log("hello"); // add a function to route to the elemenet.id
-                
-
-
-
-
-
-              };
-            }
-          });
-        })
-        .catch(function(error) {
-          console.log(error);
+            // myAPI.updateClubs(element._id)
+            // .then( function(response) {
+            //   console.log("inside add club update: ", response);
+            // })
+            // .catch(function(error) {
+            //   console.log(error);
+            // });
+          };
         });
+      });
     }
   }
 
@@ -161,6 +155,7 @@ export default class SearchClubForm extends React.Component {
       <div>
         <h1> Search a Book Club</h1>
         <form idname="searchClubForm" onSubmit={this.handleSubmit}>
+          <p>Please Write Full Club Name</p>
           <p>tHingS arE CasE sEnsItIVe oUt here:</p>
           <label>
             Search Club Name: {"    "}
