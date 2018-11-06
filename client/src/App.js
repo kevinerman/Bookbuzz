@@ -37,8 +37,8 @@ const App = () => (
           <Route exact path="/callback" component={Profile} />
           <Route exact path="/login" component={Login} />
           <Route exact path="/about" component={About} />
-          <Route exact path="/bookclub" component={BookClub} />
-          <Route exact path="/yourbookclub" component={YourBookClub} />
+          <Route  path="/bookclub" component={BookClub} />
+          <Route  path="/yourbookclub/" component={YourBookClub} />
           <Route exact path="/home" component={Search} />
           <Route exact path="/saved" component={SavedBooks} />
           <Route exact path="/profile" component={Profile} />  

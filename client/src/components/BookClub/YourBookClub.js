@@ -4,13 +4,15 @@ export default class BookClubPage extends Component {
   constructor() {
     super();
     this.state = {
-      clubName: ""
+      // club_id: ""
     };
   }
 
+
   render() {
     return (
-      <div className="rounded" style={{ background: "	#F0F8FF" }}>
+      <div className="rounded" style={{ background: "	" }}>
+        <h4>Book Club Name Comes Here</h4>
         <div className="row">
           <button className="buttonClubCreate">Club Info</button> {`         `}
           <button className="buttonClubCreate">Book Info</button> {`         `}
@@ -34,7 +36,7 @@ export default class BookClubPage extends Component {
                     name="postDiscussion"
                     className="form-control"
                     id="postDiscussion"
-                    aria-describedby="emailHelp"
+                    aria-describedby="disc help"
                     placeholder="Post a comment or discussion here"
                     // onChange={this.handleUsernameChanged.bind(this)}
                   />

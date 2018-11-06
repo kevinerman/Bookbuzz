@@ -1,6 +1,6 @@
 import React, { Component } from "react";
-import AddBookClub from "../../components/AddBookClub";
-import SearchBookClub from "../../components/searchBookClub";
+import AddBookClub from "../../components/BookClub/AddBookClub";
+import SearchBookClub from "../../components/BookClub/searchBookClub";
 
 import Wrapper from "../../components/Wrapper";
 

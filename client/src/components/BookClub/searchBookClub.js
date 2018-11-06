@@ -1,6 +1,9 @@
 import React from "react";
-import "./styles.css";
-import myAPI from "../utils/API";
+import "../styles.css";
+import myAPI from "../../utils/API";
+import { BrowserRouter as Router, Route, Switch, Link } from "react-router-dom";
+// import Button from './Button/Button';
+import BookClubPage from "./YourBookClub";
 
 export default class SearchClubForm extends React.Component {
   constructor(props) {
@@ -8,6 +11,7 @@ export default class SearchClubForm extends React.Component {
 
     this.state = {
       searchClubName: "",
+
       searchByBookNameByBook: ""
     };
 
@@ -26,7 +30,9 @@ export default class SearchClubForm extends React.Component {
     });
   }
 
- 
+  handleClub(params) {
+    console.log(params);
+  }
 
   handleSubmit(event) {
     event.preventDefault();
@@ -34,14 +40,11 @@ export default class SearchClubForm extends React.Component {
     document.getElementById("display_clubs").innerHTML = "";
     //IF CLUBNAME IS TRUE THEN DO THIS OR DO THIS (LET BOOKDEFAULT="HARRY POTTER")
     // needs to take input
-    
+
     let formData2 = {
       searchClubName: this.state.searchClubName,
       searchByBookNameByBook: this.state.searchByBookNameByBook
     };
-
-    // console.log("hello", formData2.searchClubName);
-    // console.log("hello2", formData2.searchByBookNameByBook);
 
     if (!formData2.searchByBookNameByBook) {
       myAPI
@@ -56,7 +59,7 @@ export default class SearchClubForm extends React.Component {
             if (!element.clubName) {
               element.clubName = "Harry Potter";
             }
-           
+
             if (element.clubName.includes(formData2.searchClubName)) {
               let iDiv = document.createElement("div");
               iDiv.id = "block" + i;
@@ -68,16 +71,19 @@ export default class SearchClubForm extends React.Component {
               s.append(element.bookName);
               s.append(element.meetingDate);
 
-              var newBtn = document.createElement("button"); 
-              var newContent = document.createTextNode("Go to clubpage"); 
-              newBtn.appendChild(newContent);  
+              var newBtn = document.createElement("button");
+              var newContent = document.createTextNode("Go to clubpage");
+              newBtn.appendChild(newContent);
               newBtn.setAttribute("class", "buttonClubCreate");
-
-              newBtn.id="clubnumber"+i;
+              newBtn.id = element._id;
 
               s.appendChild(newBtn);
+              newBtn.onclick = function() {
+                console.log("hello"); // add a function to route to the elemenet.id
+                
+              };
 
-              
+              // <Button title='Go to ClubPage' clicked={(event) => this.action(event, element._id)} />
             }
           });
         })
@@ -102,6 +108,7 @@ export default class SearchClubForm extends React.Component {
             }
 
             if (element.bookName.includes(formData2.searchByBookNameByBook)) {
+              console.log("*&#*&#*&#", element._id);
               let iDiv = document.createElement("div");
               iDiv.id = "block" + i;
               document.getElementById("display_clubs").appendChild(iDiv);
@@ -112,6 +119,34 @@ export default class SearchClubForm extends React.Component {
               s.append(element.clubName);
               s.append(element.bookName);
               s.append(element.meetingDate);
+
+              var newBtn = document.createElement("button");
+              var newContent = document.createTextNode("Add Bookclub!");
+              newBtn.appendChild(newContent);
+              newBtn.setAttribute("class", "buttonClubCreate");
+
+              // newBtn.onclick(console.log("hello"));
+              newBtn.id = element._id;
+
+              // newBtn.setAttribute("value", element._id);
+              // newBtn.setAttribute("to", `/bookclub/` + element._id);
+              newBtn.value = element._id;
+
+              // let clubLink = <Link to = "/bookclub2/"   />
+              // clubLink.to= `/bookclub/` + element._id ;
+
+              s.appendChild(newBtn);
+              // newBtn.addEventListener("click", console.log("hello"));
+
+              newBtn.onclick = function() {
+                console.log("hello"); // add a function to route to the elemenet.id
+                
+
+
+
+
+
+              };
             }
           });
         })
@@ -150,9 +185,18 @@ export default class SearchClubForm extends React.Component {
 
           <br />
 
-          <input type="submit" value="Submit" className="btn buttonClubCreate" />
+          <input
+            type="submit"
+            value="Submit"
+            className="btn buttonClubCreate"
+          />
         </form>
         <div id="display_clubs" className="row" />
+        <Router>
+          <Switch>
+            <Route path="/bookclub/:Clubid" component={BookClubPage} />
+          </Switch>
+        </Router>
       </div>
     );
   }

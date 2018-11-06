@@ -1,6 +1,6 @@
 import React from "react";
-import "./styles.css";
-import myAPI from "../utils/API";
+import "../styles.css"
+import myAPI from "../../utils/API";
 
 export default class NameForm extends React.Component {
   constructor(props) {
