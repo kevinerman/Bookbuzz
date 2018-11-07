@@ -1,10 +1,15 @@
-import React from "react";
+import React, {Component} from "react";
+// import Auth from "../Auth/Auth";
 
+// getProfile(event){
+//
+// }
 
 const Profile = props => (
   <div>
     <div className="text-center">
       <h1>Welcome Back </h1>
+
       <p>Update your Info</p>
     </div>
     <form>
@@ -17,7 +22,7 @@ const Profile = props => (
           id="username"
           aria-describedby="emailHelp"
           placeholder="Enter email"
-          
+
         />
         <small id="emailHelp" className="form-text text-muted">
           We'll never share your email with anyone else.
@@ -31,14 +36,14 @@ const Profile = props => (
           className="form-control"
           id="password"
           placeholder="Password"
-         
+
         />
       </div>
       <br />
       <button
         type="submit"
         className="btn btn-outline-warning btn-lg btn-block"
-        
+
       >
         Submit
           </button>
