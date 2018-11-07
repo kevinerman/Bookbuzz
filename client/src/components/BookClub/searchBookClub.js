@@ -34,9 +34,11 @@ export default class SearchClubForm extends React.Component {
     });
   }
 
-  addClubHandler = (event, id) => {
+  addClubHandler = (event, id, name) => {
+    event.preventDefault();
     console.log(id, "inside addclubhandler");
     console.log(localStorage.id_token, "local Storage User");
+    console.log(name);
 
     let clubChangeData = {
       clubid: id,
