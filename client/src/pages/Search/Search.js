@@ -99,7 +99,7 @@ class Search extends Component {
         <Wrapper>
         <Card title="Search for Books">
         <SearchForm 
-          // submit={this.handleFormSubmit} 
+          submit={this.handleFormSubmit} 
           changed={this.handleInputChange}
           labels={this.state.labels} />
         </Card>
