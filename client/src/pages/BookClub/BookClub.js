@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import AddBookClub from "../../components/BookClub/AddBookClub";
 import SearchBookClub from "../../components/BookClub/searchBookClub";
 
+
 import Wrapper from "../../components/Wrapper";
 
 class BookClub extends Component {
@@ -11,6 +12,7 @@ class BookClub extends Component {
     super(props);
 
     this.state = {
+      searchResults: [],
       clubName: "",
       bookName: "",
       meetingDate: ""
@@ -21,6 +23,9 @@ class BookClub extends Component {
 
 
   render() {
+
+    
+
     return (
       <div>
         <hr />
@@ -29,7 +34,7 @@ class BookClub extends Component {
       
       <Wrapper>
         <AddBookClub />
-       <br/>    <br/>    
+        <br/><br/>    
         <SearchBookClub />
         
       </Wrapper>

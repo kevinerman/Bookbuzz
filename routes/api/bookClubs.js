@@ -20,6 +20,7 @@ router.post('/search', function(req, res){
     
     db.Club.find({bookName:req.body.searchByBookNameByBook })
     .then(result => {
+      console.log(result);
       res.send(result);
     })
    
@@ -30,6 +31,7 @@ router.post('/search2', function(req, res){
   
   db.Club.find({clubName:req.body.searchClubName })
   .then(result => {
+    console.log(result);
     res.send(result);
   })
  
@@ -40,11 +42,27 @@ router.post('/addClub', function(req, res){
   console.log(req.body, "This is the search object in bookclub.js in line 40 bookclub.js");
   console.log(req.body._id );
 
+
+
+  // adds the user to clubs model or club id in USER model
+
+
   // db.User.findByIdAndUpdate(this.User._id, {savedClubs:req.body._id })
   // .then(result => {
   //   res.send(result);
   // })
- 
+
+
+
+  let myStorage =  this.localStorage;
+  // .id_token;
+  console.log(myStorage);
+
+
+
+
+
+
 });
 
 
