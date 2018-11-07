@@ -3,7 +3,7 @@ import React, { Component } from "react";
 import Card from '../../components/Card/card';
 import BookScraped from '../../components/BookScraped/BookScraped';
 import myAPI from "../../utils/API";
-// import Wrapper from "../../components/Wrapper";
+import Wrapper from "../../components/Wrapper";
 
 class SavedBooks extends Component {
   state = {
@@ -51,11 +51,11 @@ class SavedBooks extends Component {
         <hr />
         <hr />
         <hr />
-        {/* <Wrapper> */}
+        <Wrapper>
         <Card title="Saved Articles">
          {saved}
         </Card>
-        {/* </Wrapper> */}
+        </Wrapper>
       </div>
     )
 

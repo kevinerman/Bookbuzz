@@ -9,10 +9,6 @@ import Auth from "../../Auth/Auth";
 
 console.log(Auth);
 
-// const auth = new Auth();
-// auth.login();
-
-
 class Login extends Component {
 
   render() {

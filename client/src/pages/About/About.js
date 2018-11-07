@@ -58,7 +58,7 @@ class Home extends Component {
               <div className="card-body">
                 <h5 className="card-title">Kevin</h5>
                 {/* <p className="card-text">LinkedIn: </p> */}
-                <ion-icon name="logo-linkedin"></ion-icon>
+          
               </div>
 
             </div>
@@ -69,7 +69,7 @@ class Home extends Component {
               <div className="card-body">
                 <h5 className="card-title">Rion</h5>
                 {/* <p className="card-text">LinkedIn: </p> */}
-                <ion-icon name="logo-linkedin"></ion-icon>
+           
               </div>
 
             </div>
@@ -78,7 +78,7 @@ class Home extends Component {
               <div className="card-body">
                 <h5 className="card-title">Joe</h5>
                 {/* <p className="card-text"> LinkedIn: </p> */}
-                <ion-icon name="logo-linkedin"></ion-icon>
+        
               </div>
 
             </div>
