@@ -20,7 +20,7 @@ const handleAuthentication = (nextState, replace) => {
     auth.handleAuthentication();
   }
 }
- 
+
 
 const App = () => (
     <Router>
@@ -41,11 +41,31 @@ const App = () => (
           <Route  path="/yourbookclub/" component={YourBookClub} />
           <Route exact path="/home" component={Search} />
           <Route exact path="/saved" component={SavedBooks} />
-          <Route exact path="/profile" component={Profile} />  
+          <Route exact path="/profile" component={Profile} />
           <Route component={NoMatch} />
-        </Switch>      
+        </Switch>
       </div>
     </Router>
   );
-  
+
+let name = "friend";
+let profileImage = "";
+let username = "";
+let auth0UserId = "";
+
+if (auth.isAuthenticated()) {
+    name = auth.getProfile().given_name || auth.getProfile() || "friend";
+    profileImage = auth.getProfile().picture || "";
+    username = auth.getProfile().nickname || "";
+    auth0UserId = auth.getProfile().sub || "";
+}
+
+let initialState = {
+    name,
+    profileImage,
+    username,
+    auth0UserId,
+    auth
+};
+console.log(initialState);
   export default App;

@@ -44,20 +44,20 @@ export default class SearchClubForm extends React.Component {
     };
 
     // Here it should search all clubs and validate andf nest the line 57-61(updateclubs)  inside here
-    // myAPI
-    //   .searchAllClubs(clubChangeData)
-    //   .then(
-    //     res => console.log(res)
+    myAPI
+      .searchAllClubs(clubChangeData)
+      .then(
+        res => console.log(res)
         
         
       
-    //     )
-    //   .catch(err => console.log(err));
-
-    myAPI
-      .updateClubs(clubChangeData)
-      .then(res => console.log(res))
+        )
       .catch(err => console.log(err));
+
+    // myAPI
+    //   .updateClubs(clubChangeData)
+    //   .then(res => console.log(res))
+    //   .catch(err => console.log(err));
   };
 
   handleSubmit(event) {
