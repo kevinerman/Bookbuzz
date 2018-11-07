@@ -77,7 +77,7 @@ class Search extends Component {
   }
 
   render() {
-    let searchResults = "Enter a name of a book.";
+    let searchResults = "Enter the name of a book.";
     if (this.state.showResults) {
       searchResults = this.state.results.map((book, index) => {
         return <BookScraped
@@ -112,7 +112,7 @@ class Search extends Component {
 
         
         <SearchForm 
-          // submit={this.handleFormSubmit} 
+          submit={this.handleFormSubmit} 
           changed={this.handleInputChange}
           labels={this.state.labels} />
         </Card>

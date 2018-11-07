@@ -39,6 +39,7 @@ export default class LoginForm extends Component {
 
     return (
       <div>
+        <br />
         <div className="text-center">
           <h1> Log in! </h1>
         </div>
@@ -66,7 +67,7 @@ export default class LoginForm extends Component {
             }
         </form>
         <br /> <br />   <br /> 
-        <div className="text-center">
+        {/* <div className="text-center">
           <h1> Register Here! </h1>
           <p> The email address will be your username </p>
         </div>
@@ -115,7 +116,7 @@ export default class LoginForm extends Component {
               rows="3"
             />
           </div>
-        </form>
+        </form> */}
       </div>
     );
   }

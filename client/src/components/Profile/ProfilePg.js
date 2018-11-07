@@ -4,8 +4,8 @@ import React from "react";
 const Profile = props => (
   <div>
     <div className="text-center">
-      <h1>Welcome Back (UserName) </h1>
-      {/* <p>Update your Info</p> */}
+      <h1>Welcome Back </h1>
+     
   
 
     </div>
@@ -17,12 +17,6 @@ const Profile = props => (
       <h1> Books & Clubs </h1>
     </div>
 
-    <ol>
-      <h3>Books</h3>
-      <li> Book 1 </li>
-      <li> Book 2 </li>
-      <li> Book 3 </li>
-    </ol>
     <ol>
       <h3>Clubs</h3>
       <li> Club1 </li>

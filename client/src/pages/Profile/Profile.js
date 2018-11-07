@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import Wrapper from "../../components/Wrapper";
 import ProfilePg from "../../components/Profile/ProfilePg"
+import SavedBooks from "../SavedBooks/SavedBooks";
+
 
 class Profile extends Component {
     
@@ -13,6 +15,7 @@ class Profile extends Component {
 
                 <Wrapper>
                     <ProfilePg />
+                    <SavedBooks />
                 </Wrapper>
             </div>
         )
