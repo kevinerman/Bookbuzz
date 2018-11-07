@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import LoginForm from "../../components/LoginForm";
 import Wrapper from "../../components/Wrapper";
+import Book from "./image/books.jpeg";
 
 import Bee from "../../components/Bee";
 
@@ -23,6 +24,7 @@ class Login extends Component {
         
         <Wrapper>
           <br></br>
+          <img  src={Book} alt="book" />
         <Bee/>
         
         <LoginForm />
