@@ -13,7 +13,10 @@ export default class SearchClubForm extends React.Component {
     this.state = {
       searchResults: [],
       searchClubName: "",
-      searchByBookNameByBook: ""
+      searchByBookNameByBook: "",
+
+      clubid: "",
+      useradd: ""
     };
 
     this.handleChange = this.handleChange.bind(this);
@@ -32,47 +35,50 @@ export default class SearchClubForm extends React.Component {
   }
 
   addClubHandler = (event, id) => {
-    console.log(id, "inside addclubhandler" );
-    console.log(localStorage.id_token);
-    
-    // myAPI
-    //   .deleteBook(id)
-    //   .then(res => this.getBooksHandler())
-    //   .catch(err => console.log(err));
+    console.log(id, "inside addclubhandler");
+    console.log(localStorage.id_token, "local Storage User");
+
+    let clubChangeData = {
+      clubid: id,
+      useradd: localStorage.id_token
+    };
+
+    myAPI
+      .updateClubs(clubChangeData)
+      .then(res => console.log(res))
+      .catch(err => console.log(err));
   };
 
   handleSubmit(event) {
     event.preventDefault();
-    // console.log ("hi");
-
 
     // document.getElementById("display_clubs").innerHTML = "";
-    //IF CLUBNAME IS TRUE THEN DO THIS OR DO THIS (LET BOOKDEFAULT="HARRY POTTER")
-    // needs to take input
 
     let formData2 = {
       searchClubName: this.state.searchClubName,
       searchByBookNameByBook: this.state.searchByBookNameByBook
     };
 
-    console.log(formData2);
-
+    // console.log(formData2);
 
     if (!formData2.searchByBookNameByBook) {
-      console.log("in the no book name");
-      
-      myAPI.searchClubsByName(formData2)
-      .then(res => {
-        console.log(res.data);
-        this.setState({ searchResults: this.state.searchResults.concat(res.data) })
-
+      // console.log("in the no book name");
+      myAPI.searchClubsByName(formData2).then(res => {
+        // console.log(res.data);
+        this.setState({
+          searchResults: this.state.searchResults.concat(res.data),
+        });
       });
-
     }
     //end of the search by club name
     else {
-      console.log("book named entered");
-      
+      // console.log("book named entered");
+      myAPI.searchClubsByBook(formData2).then(res => {
+        console.log(res.data);
+        this.setState({
+          searchResults: this.state.searchResults.concat(res.data),
+        });
+      });
     }
   }
 
@@ -80,7 +86,7 @@ export default class SearchClubForm extends React.Component {
     let searched = <p> There are no book clubs to show</p>;
     if (this.state.searchResults.length > 0) {
       searched = this.state.searchResults.map((club, index) => {
-        console.log(club);
+        // console.log(club);
         return (
           <SearchResultItem
             key={club._id}

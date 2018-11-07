@@ -71,6 +71,7 @@ export default class NameForm extends React.Component {
               value={this.state.clubName}
               onChange={this.handleChange}
               name="clubName"
+              required="required"
             />
           </label>
           <br />
@@ -81,6 +82,7 @@ export default class NameForm extends React.Component {
               value={this.state.bookName}
               onChange={this.handleChange}
               name="bookName"
+              required="required"
             />
           </label>
           <br />
@@ -92,6 +94,7 @@ export default class NameForm extends React.Component {
               onChange={this.handleChange}
               placeholder="Second Tuesdays 5pm CST"
               name="meetingDate"
+              required="required"
             />
           </label>
           <br />

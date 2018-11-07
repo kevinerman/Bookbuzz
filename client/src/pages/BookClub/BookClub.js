@@ -12,7 +12,7 @@ class BookClub extends Component {
     super(props);
 
     this.state = {
-      searchResults: [],
+      
       clubName: "",
       bookName: "",
       meetingDate: ""

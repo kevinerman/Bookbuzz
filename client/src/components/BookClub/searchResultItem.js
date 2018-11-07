@@ -1,12 +1,5 @@
 import React from 'react';
 
-// this.addClub = this.addClub.bind(this);
-
-// let addClub = event => {
-
-// event.preventDefault();
-// }
-
 const searchedClub = (props) => (
     <div  id={props.clubId}>
       <h3 >

@@ -26,14 +26,14 @@ export default {
       console.log("inside the getClubs in API js");
       return axios.get("/api/bookclubs/");
     },
-    searchClubs: function(info) {
+    searchClubsByBook: function(info) {
       return axios.post('/api/bookclubs/search', info);
     },
     searchClubsByName: function(info) {
       return axios.post('/api/bookclubs/search2', info);
     },
-    updateClubs: function(info){
-      console.log("inside the getclubs in API js");
-      return axios.post("/api/bookclubs/addClub", info);
+    updateClubs: function(clubChangeData){
+      console.log("inside the getclubs in API js", clubChangeData);
+      return axios.post("/api/bookclubs/addClub", clubChangeData);
     }
   };
