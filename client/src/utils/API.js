@@ -26,6 +26,10 @@ export default {
       console.log("inside the getClubs in API js");
       return axios.get("/api/bookclubs/");
     },
+    searchAllClubs: function(data){
+      return axios.post('/api/bookclubs/searchall', data);
+    }
+    ,
     searchClubsByBook: function(info) {
       return axios.post('/api/bookclubs/search', info);
     },

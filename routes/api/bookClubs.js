@@ -15,6 +15,19 @@ router
   .delete(bookClubsController.remove);
 
 
+  router.post('/searchall', function(req, res){
+    // console.log(req.body.searchByBookNameByBook, "This is the search object");
+    
+    db.Club.find({_id : req.body.clubid})
+    .then(result => {
+      console.log(result);
+      res.send(result);
+    })  
+});
+
+
+
+
 router.post('/search', function(req, res){
     // console.log(req.body.searchByBookNameByBook, "This is the search object");
     
@@ -22,8 +35,7 @@ router.post('/search', function(req, res){
     .then(result => {
       console.log(result);
       res.send(result);
-    })
-   
+    })  
 });
 
 router.post('/search2', function(req, res){
@@ -34,7 +46,6 @@ router.post('/search2', function(req, res){
     // console.log( "line 34", result);
     res.send(result);
   })
- 
 });
 
 router.post('/addClub', function(req, res){

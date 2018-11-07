@@ -43,6 +43,17 @@ export default class SearchClubForm extends React.Component {
       useradd: localStorage.id_token
     };
 
+    // Here it should search all clubs and validate andf nest the line 57-61(updateclubs)  inside here
+    // myAPI
+    //   .searchAllClubs(clubChangeData)
+    //   .then(
+    //     res => console.log(res)
+        
+        
+      
+    //     )
+    //   .catch(err => console.log(err));
+
     myAPI
       .updateClubs(clubChangeData)
       .then(res => console.log(res))
@@ -66,7 +77,7 @@ export default class SearchClubForm extends React.Component {
       myAPI.searchClubsByName(formData2).then(res => {
         // console.log(res.data);
         this.setState({
-          searchResults: this.state.searchResults.concat(res.data),
+          searchResults: this.state.searchResults.concat(res.data)
         });
       });
     }
@@ -76,7 +87,7 @@ export default class SearchClubForm extends React.Component {
       myAPI.searchClubsByBook(formData2).then(res => {
         console.log(res.data);
         this.setState({
-          searchResults: this.state.searchResults.concat(res.data),
+          searchResults: this.state.searchResults.concat(res.data)
         });
       });
     }
