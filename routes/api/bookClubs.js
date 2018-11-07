@@ -1,5 +1,6 @@
 const router = require("express").Router();
 const bookClubsController = require("../../controllers/bookClubsController");
+const db = require("../../models");
 
 // Matches with "/api/books"
 router.route("/")
@@ -12,5 +13,58 @@ router
   .get(bookClubsController.findById)
   .put(bookClubsController.update)
   .delete(bookClubsController.remove);
+
+
+router.post('/search', function(req, res){
+    console.log(req.body.searchByBookNameByBook, "This is the search object");
+    
+    db.Club.find({bookName:req.body.searchByBookNameByBook })
+    .then(result => {
+      console.log(result);
+      res.send(result);
+    })
+   
+});
+
+router.post('/search2', function(req, res){
+  console.log(req.body.searchClubName, "This is the search object in bookclub.js");
+  
+  db.Club.find({clubName:req.body.searchClubName })
+  .then(result => {
+    console.log(result);
+    res.send(result);
+  })
+ 
+});
+
+router.post('/addClub', function(req, res){
+  // console.log(req.body.searchClubName, "This is the search object in bookclub.js *%%*&%^E*^E");
+  console.log(req.body, "This is the search object in bookclub.js in line 40 bookclub.js");
+  console.log(req.body._id );
+
+
+
+  // adds the user to clubs model or club id in USER model
+
+
+  // db.User.findByIdAndUpdate(this.User._id, {savedClubs:req.body._id })
+  // .then(result => {
+  //   res.send(result);
+  // })
+
+
+
+  let myStorage =  this.localStorage;
+  // .id_token;
+  console.log(myStorage);
+
+
+
+
+
+
+});
+
+
 
 module.exports = router;

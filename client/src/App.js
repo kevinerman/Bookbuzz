@@ -6,6 +6,7 @@ import NoMatch from "./pages/NoMatch/NoMatch";
 import About from "./pages/About/About";
 import Login from "./pages/Login/Login";
 import BookClub from "./pages/BookClub/BookClub";
+import YourBookClub from "./pages/BookClub/BookPage";
 import Search from "./pages/Search/Search";
 import SavedBooks from './pages/SavedBooks/SavedBooks';
 import Profile from './pages/Profile/Profile'
@@ -36,7 +37,8 @@ const App = () => (
           <Route exact path="/callback" component={Profile} />
           <Route exact path="/login" component={Login} />
           <Route exact path="/about" component={About} />
-          <Route exact path="/bookclub" component={BookClub} />
+          <Route  path="/bookclub" component={BookClub} />
+          <Route  path="/yourbookclub/" component={YourBookClub} />
           <Route exact path="/home" component={Search} />
           <Route exact path="/saved" component={SavedBooks} />
           <Route exact path="/profile" component={Profile} />  
