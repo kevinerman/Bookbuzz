@@ -51,12 +51,17 @@ form {
   width: 130px;
   border-radius: 40px;
   background: #fff;
-  border: 2px solid red;
-  color: red;
+  border: 2px solid orangered;
+  color: orangered;
   letter-spacing: 1px;
   text-shadow: 0;
   font-size: 12px;
   font-weight: bold;
   cursor: pointer;
   transition: all 0.25s ease;
+}
+
+.buttonDelete:hover {
+  color: white;
+  background: orangered;
 }
