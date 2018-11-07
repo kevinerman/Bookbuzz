@@ -22,6 +22,7 @@ class Login extends Component {
         <hr />
         
         <Wrapper>
+          <br></br>
         <Bee/>
         
         <LoginForm />
