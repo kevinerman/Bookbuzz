@@ -31,9 +31,15 @@ export default class SearchClubForm extends React.Component {
     });
   }
 
-  handleClub(params) {
-    console.log(params);
-  }
+  addClubHandler = (event, id) => {
+    console.log(id, "inside addclubhandler" );
+    console.log(localStorage.id_token);
+    
+    // myAPI
+    //   .deleteBook(id)
+    //   .then(res => this.getBooksHandler())
+    //   .catch(err => console.log(err));
+  };
 
   handleSubmit(event) {
     event.preventDefault();
@@ -82,6 +88,7 @@ export default class SearchClubForm extends React.Component {
             clubName={club.clubName}
             bookName={club.bookName}
             meetingDate={club.meetingDate}
+            action={this.addClubHandler}
           />
         );
       });

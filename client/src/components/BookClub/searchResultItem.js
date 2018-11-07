@@ -2,7 +2,7 @@ import React from 'react';
 
 // this.addClub = this.addClub.bind(this);
 
-// addClub = event => {
+// let addClub = event => {
 
 // event.preventDefault();
 // }
@@ -13,9 +13,9 @@ const searchedClub = (props) => (
         <strong>{props.clubName}</strong>
       </h3>
       <h5>Book: {props.bookName}</h5>
-      {/* <img src={props.URL} alt={"no pic available"}/> */}
+      
       <p> {props.meetingDate}</p>
-      <button className="btn buttonClubCreate" onClick="this.addClub()"> ADD CLUB</button>
+      <button className="btn buttonClubCreate" onClick={(event) => props.action(event, props.clubId)}> ADD CLUB</button>
      
     </div>
   );

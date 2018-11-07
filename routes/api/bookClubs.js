@@ -54,9 +54,9 @@ router.post('/addClub', function(req, res){
 
 
 
-  let myStorage =  this.localStorage;
-  // .id_token;
-  console.log(myStorage);
+  // let myStorage =  this.localStorage;
+  // // .id_token;
+  // console.log(myStorage);
 
 
 
