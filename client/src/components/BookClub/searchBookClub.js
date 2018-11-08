@@ -52,6 +52,7 @@ export default class SearchClubForm extends React.Component {
           console.log(element);
 
           if(element.clubMembers.length <1 ){
+            alert("adding you to the club");
             myAPI
             .updateClubs(clubChangeData)
             .then(res => console.log(res))
@@ -66,9 +67,9 @@ export default class SearchClubForm extends React.Component {
             //   : addClub();
 
             if (localStorage.id_token === e) {
-              alert("You are already a member!")
+              alert("You are already a member!");
             } else {
-              alert("adding u to the club")
+              alert("adding you to the club");
               myAPI
                 .updateClubs(clubChangeData)
                 .then(res => console.log(res))
