@@ -3,6 +3,7 @@ import "../styles.css";
 import myAPI from "../../utils/API";
 import SearchResultItem from "../../components/BookClub/searchResultItem";
 // import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import { Link} from "react-router-dom";
 // import Button from './Button/Button';
 // import BookClubPage from "./YourBookClub";
 
@@ -46,19 +47,81 @@ export default class SearchClubForm extends React.Component {
     };
 
     // Here it should search all clubs and validate andf nest the line 57-61(updateclubs)  inside here
-    // myAPI
-    //   .searchAllClubs(clubChangeData)
-    //   .then(
-    //     res => console.log(res)
-        
-        
-      
-    //     )
-    //   .catch(err => console.log(err));
+    myAPI
+      .searchAllClubs(clubChangeData)
+      .then(res =>
+        res.data.forEach(function(element) {
+          // console.log(element.clubMembers);
+          console.log(element);
+
+          if (element.clubMembers.length < 1) {
+            alert("adding you to the club");
+            myAPI
+              .updateClubs(clubChangeData)
+              .then(res => console.log(res))
+              .catch(err => console.log(err));
+          }
+
+          element.clubMembers.forEach(function(e) {
+            console.log(e);
+            // localStorage.id_token === e
+            //   ? alert("You are already a member!")
+            //   : addClub();
+
+            if (localStorage.id_token === e) {
+              alert("You are already a member!");
+            } else {
+              alert("adding you to the club");
+              myAPI
+                .updateClubs(clubChangeData)
+                .then(res => console.log(res))
+                .catch(err => console.log(err));
+            }
+          });
+        })
+      )
+      .catch(err => console.log(err));
+  };
+
+  goToClub = (event, id) => {
+    // console.log("goToClub", id);
+
+    //if local store is a member o that club, then process to a route
+    //else local storage user not a member, alert ("not a member, join first!");
+
+    let clubQuery = {
+      clubid: id,
+      useradd: localStorage.id_token
+    };
 
     myAPI
-      .updateClubs(clubChangeData)
-      .then(res => console.log(res))
+      .searchAllClubs(clubQuery)
+      .then(res =>
+        res.data.forEach(function(element) {
+          console.log(element.clubMembers);
+
+          if (element.clubMembers.length < 1) {
+            alert("Join the club first!");
+            // console.log("102$$$",element.clubMembers.length )
+          }
+
+          element.clubMembers.forEach(function(e) {
+            console.log(e);
+
+            if (clubQuery.useradd === e) {
+              alert("going to club page!!! woot woot");
+              // take to the club ID LINK and pass ID as props
+
+              // let linkTo = "/bookclub"+clubQuery.clubid
+              //  return <Link
+              //  to = {linkTo}>ClubHome</Link>
+
+            } else {
+              alert("Join the club first!");
+            }
+          });
+        })
+      )
       .catch(err => console.log(err));
   };
 
@@ -66,6 +129,10 @@ export default class SearchClubForm extends React.Component {
     event.preventDefault();
 
     // document.getElementById("display_clubs").innerHTML = "";
+    //  console.log("**88",this.state.searchResults );
+    this.setState({
+      searchResults: []
+    });
 
     let formData2 = {
       searchClubName: this.state.searchClubName,
@@ -108,6 +175,7 @@ export default class SearchClubForm extends React.Component {
             bookName={club.bookName}
             meetingDate={club.meetingDate}
             action={this.addClubHandler}
+            action_club={this.goToClub}
           />
         );
       });

@@ -49,7 +49,7 @@ export default class LoginForm extends Component {
         return (
             <div>
                 <div className="text-center">
-                    <h1> Log in! </h1>
+                    {/* <h1> Log in! </h1> */}
                 </div>
                 <form>
                     <br/>

@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-// import Container from '../../components/Container/Container';
 import Card from "../../components/Card/card";
 import BookScraped from "../../components/BookScraped/BookScraped";
 import myAPI from "../../utils/API";

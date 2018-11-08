@@ -21,10 +21,10 @@ const Nav = () => (
              
               <Link to="/home" className="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger navwhite">Search Book</Link>{" "}
             </li>
-            <li className="nav-item mx-0 mx-lg-1">
+            {/* <li className="nav-item mx-0 mx-lg-1">
              
               <Link to="/saved" className="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger navwhite">Saved Book</Link>{" "}
-            </li>
+            </li> */}
             <li className="nav-item mx-0 mx-lg-1">
               
               <Link to="/about" className="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger navwhite">About</Link>{" "}

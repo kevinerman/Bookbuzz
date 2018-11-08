@@ -1,70 +1,75 @@
-import React, {Component} from "react";
-// import Auth from "../Auth/Auth";
+import React, { Component } from "react";
+// import Card from "../Card/card";
+import BookScraped from "../BookScraped/BookScraped";
 
-// getProfile(event){
-//
-// }
+import myAPI from "../../utils/API";
 
-const Profile = props => (
-  <div>
-    <div className="text-center">
-      <h1>Welcome Back </h1>
+class Profile extends Component {
+  state = {
+    savedBooks: []
+  };
 
-      <p>Update your Info</p>
-    </div>
-    <form>
-      <div className="form-group">
-        <label for="exampleInputEmail1">Email address</label>
-        <input
-          type="email"
-          name="username"
-          className="form-control"
-          id="username"
-          aria-describedby="emailHelp"
-          placeholder="Enter email"
+  componentDidMount() {
+    this.getBooksHandler();
+  }
 
-        />
-        <small id="emailHelp" className="form-text text-muted">
-          We'll never share your email with anyone else.
-            </small>
+  getBooksHandler() {
+    myAPI
+      .getBooks()
+      .then(res => this.setState({ savedBooks: res.data }))
+      .catch(err => console.log(err));
+  }
+
+  deleteBooksHandler = (event, id) => {
+    myAPI
+      .deleteBook(id)
+      .then(res => this.getBooksHandler())
+      .catch(err => console.log(err));
+  };
+
+  render() {
+    let saved = <p>There are no books saved! Go to Search Book page to find a book of your choice</p>;
+
+    if (this.state.savedBooks.length > 0) {
+      saved = this.state.savedBooks.map((book, index) => {
+        console.log(book);
+        return (
+          
+            <BookScraped
+              key={book._id}
+              bookId={book._id}
+              title={book.title}
+              author={book.author}
+              URL={book.URL}
+              preview={book.preview}
+              action={this.deleteBooksHandler}
+              saveTitle="Delete from saved"
+            />
+         
+        );
+      });
+    }
+
+    let savedClubs = <p> No Clubs Saved, go to BookClubs page to search, create and join a book club</p>
+
+    return (
+      <div>
+        <hr />
+        <hr />
+        <hr />
+
+      <h1>Saved Clubs</h1>
+        <br/>
+        {savedClubs}
+<br/>
+
+
+        <h1>Saved Books</h1>
+        <br/>
+        {saved}
       </div>
-      <div className="form-group">
-        <label for="password">Password</label>
-        <input
-          type="password"
-          name="password"
-          className="form-control"
-          id="password"
-          placeholder="Password"
-
-        />
-      </div>
-      <br />
-      <button
-        type="submit"
-        className="btn btn-outline-warning btn-lg btn-block"
-
-      >
-        Submit
-          </button>
-    </form>
-
-
-    <br /> <br />   <br />
-
-
-    <div className="text-center">
-      <h1> Books & Clubs </h1>
-      <p>Here are you're current books and clubs </p>
-    </div>
-    <ol>
-      <li>1.</li>
-      <li>2.</li>
-      <li>3.</li>
-    </ol>
-
-
-  </div>
-);
+    );
+  }
+}
 
 export default Profile;

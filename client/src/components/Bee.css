@@ -1,34 +1,33 @@
-body{
-	width:100vw;
+body {
+  width: 100vw;
   height: 100vh;
-
 }
 
-.bee{
-	margin-top:100px;
-	position:relative;
-	animation: ani-bee 10s ease infinite;
-	transform-origin: 0% 0%;
+.bee {
+  margin-top: 100px;
+  position: relative;
+  animation: ani-bee 10s ease infinite;
+  transform-origin: 0% 0%;
 }
 
 .bee-wing-left,
 .bee-wing-right,
-.bee-body{
-	position:absolute;
+.bee-body {
+  position: absolute;
 }
 
-.bee-wing-left{
-	top:20px;
-	left:-5px;
-	transform-origin: 50% 0%;
-	animation: ani-left-wing 1s ease infinite;
+.bee-wing-left {
+  top: 20px;
+  left: -5px;
+  transform-origin: 50% 0%;
+  animation: ani-left-wing 1s ease infinite;
 }
 
-.bee-wing-right{
-	top:20px;
-	left:15px;
-	transform-origin: 50% 0%;
-	animation: ani-right-wing 1s ease infinite;
+.bee-wing-right {
+  top: 20px;
+  left: 15px;
+  transform-origin: 50% 0%;
+  animation: ani-right-wing 1s ease infinite;
 }
 
 @keyframes ani-left-wing {
@@ -48,7 +47,7 @@ body{
     transform: rotate(-10deg);
   }
   90% {
-     transform: rotate(0deg);
+    transform: rotate(0deg);
   }
   100% {
     transform: rotate(-10deg);
@@ -56,13 +55,13 @@ body{
 }
 
 @keyframes ani-bee {
-  0%{ 
-    transform: translate3d(50px,0,0) rotate(30deg);
+  0% {
+    transform: translate3d(50px, 0, 0) rotate(30deg);
   }
-	50% {
-    transform:translate3d(300px,0,0) rotate(-360deg);
+  50% {
+    transform: translate3d(300px, 0, 0) rotate(-360deg);
   }
-	100% {
-    transform: translate3d(50px,0,0) rotate(30deg);
+  100% {
+    transform: translate3d(50px, 0, 0) rotate(30deg);
   }
 }
