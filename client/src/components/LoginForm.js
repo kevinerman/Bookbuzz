@@ -1,7 +1,8 @@
-import React, {Component} from "react";
+import React, { Component } from "react";
 import Auth from "../Auth/Auth";
 import button from "./BookScraped/Button/Button";
-
+import About from "./About/About";
+import book from "./images/boooks.png";
 // import { Link } from "react-router-dom";
 // import axios from "axios";
 
@@ -15,21 +16,21 @@ export default class LoginForm extends Component {
     }
 
     handlePasswordChanged(event) {
-        this.setState({password: event.target.value});
+        this.setState({ password: event.target.value });
     }
-    logout(event){
+    logout(event) {
         const auth = new Auth();
         auth.logout()
     }
 
     handleUsernameChanged(event) {
-        this.setState({username: event.target.value});
+        this.setState({ username: event.target.value });
     }
 
 
 
 
-    handleSubmitForm(event){
+    handleSubmitForm(event) {
         event.preventDefault();
         const auth = new Auth();
         // console.log(this);
@@ -48,11 +49,13 @@ export default class LoginForm extends Component {
 
         return (
             <div>
+               <img className="card-img-top" src={book} alt="book" />          
+
                 <div className="text-center">
                     {/* <h1> Log in! </h1> */}
                 </div>
                 <form>
-                    <br/>
+                    <br />
                     {
                         (!localStorage.access_token) ? (
                             <button
@@ -64,74 +67,34 @@ export default class LoginForm extends Component {
                             </button>
 
                         ) : (
-                            <button
-                                type="submit"
-                                className="btn btn-outline-warning btn-lg btn-block"
-                                onClick={this.logout}
-                            >
-                                Log Out
+                                <button
+                                    type="submit"
+                                    className="btn btn-outline-warning btn-lg btn-block"
+                                    onClick={this.logout}
+                                >
+                                    Log Out
                             </button>
 
-                        )}
-
-
-
-
-
-
-
+                            )}
                 </form>
-                <br/> <br/> <br/>
+              <br />
+              <br />
+
                 <div className="text-center">
-                    <h1> Register Here! </h1>
-                    <p> The email address will be your username </p>
-                </div>
-                <form>
-                    <div className="form-group">
-                        <label for="exampleFormControlInput1">Email address</label>
-                        <input
-                            type="email"
-                            className="form-control"
-                            id="exampleFormControlInput1"
-                            placeholder="name@example.com"
-                        />
-                    </div>
+                    <h1> Welcome To BookBuzz</h1>
 
-                    <div className="form-group">
-                        <label for="exampleFormControlSelect1">Example select</label>
-                        <select className="form-control" id="exampleFormControlSelect1">
-                            <option>1</option>
-                            <option>2</option>
-                            <option>3</option>
-                            <option>4</option>
-                            <option>5</option>
-                        </select>
-                    </div>
-                    <div className="form-group">
-                        <label for="exampleFormControlSelect2">
-                            Example multiple select
-                        </label>
-                        <select
-                            multiple
-                            className="form-control"
-                            id="exampleFormControlSelect2"
-                        >
-                            <option>1</option>
-                            <option>2</option>
-                            <option>3</option>
-                            <option>4</option>
-                            <option>5</option>
-                        </select>
-                    </div>
-                    <div className="form-group">
-                        <label for="exampleFormControlTextarea1">Example textarea</label>
-                        <textarea
-                            className="form-control"
-                            id="exampleFormControlTextarea1"
-                            rows="3"
-                        />
-                    </div>
-                </form>
+                    <p>
+                        BookBuzz is an application created for users to find new books to
+                        read, save for later, create book clubs and join clubs based on
+                        their reading interests. It is a fun interactive app for users to
+                        connect with others who share the same interest in books. The
+                        inspiration behind this app was to create a platform for book
+                        lovers to come together and connect.
+            </p>
+                </div>
+                <br />
+                <h3 className="text-center">Our Developers</h3>
+                <About />
             </div>
         );
     }

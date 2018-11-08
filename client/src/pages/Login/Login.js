@@ -23,7 +23,7 @@ class Login extends Component {
         
         <Wrapper>
         <Bee/>
-        
+       
         <LoginForm />
 
          </Wrapper>
