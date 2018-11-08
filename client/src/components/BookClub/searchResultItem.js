@@ -9,7 +9,8 @@ const searchedClub = (props) => (
       
       <p> {props.meetingDate}</p>
       <button className="btn buttonClubCreate" onClick={(event) => props.action(event, props.clubId)}> ADD CLUB</button>
-      <button className="btn buttonDelete" onClick={(event) => props.action_club(event, props.clubId)}> GO TO CLUB</button>
+      {/* <button className="btn buttonDelete" onClick={(event) => props.action_club(event, props.clubId)}> GO TO CLUB</button> */}
+      <a className="btn buttonDelete" onClick={(event) => props.action_club(event, props.clubId)} href={props.url}> GO TO CLUB</a>    
     </div>
   );
   
