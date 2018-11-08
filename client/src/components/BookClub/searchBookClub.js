@@ -46,18 +46,38 @@ export default class SearchClubForm extends React.Component {
     // Here it should search all clubs and validate andf nest the line 57-61(updateclubs)  inside here
     myAPI
       .searchAllClubs(clubChangeData)
-      .then(
-        res => console.log(res)
-        
-        
-      
-        )
-      .catch(err => console.log(err));
+      .then(res =>
+        res.data.forEach(function(element) {
+          // console.log(element.clubMembers);
+          console.log(element);
 
-    // myAPI
-    //   .updateClubs(clubChangeData)
-    //   .then(res => console.log(res))
-    //   .catch(err => console.log(err));
+          if(element.clubMembers.length <1 ){
+            myAPI
+            .updateClubs(clubChangeData)
+            .then(res => console.log(res))
+            .catch(err => console.log(err));
+
+          }
+
+          element.clubMembers.forEach(function(e) {
+            console.log(e);
+            // localStorage.id_token === e
+            //   ? alert("You are already a member!")
+            //   : addClub();
+
+            if (localStorage.id_token === e) {
+              alert("You are already a member!")
+            } else {
+              alert("adding u to the club")
+              myAPI
+                .updateClubs(clubChangeData)
+                .then(res => console.log(res))
+                .catch(err => console.log(err));
+            }
+          });
+        })
+      )
+      .catch(err => console.log(err));
   };
 
   handleSubmit(event) {
