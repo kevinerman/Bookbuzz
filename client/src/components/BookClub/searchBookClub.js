@@ -17,7 +17,8 @@ export default class SearchClubForm extends React.Component {
       searchByBookNameByBook: "",
 
       clubid: "",
-      useradd: ""
+      useradd: "",
+      clubUrl: ""
     };
 
     this.handleChange = this.handleChange.bind(this);
@@ -84,6 +85,18 @@ export default class SearchClubForm extends React.Component {
   };
 
   goToClub = (event, id) => {
+
+    console.log(document.location.href)
+
+   const urlCheck = () => {
+      if (this.state.clubUrl == true) {
+      return ("/home") 
+      } else {
+        return ("#")
+      }
+    }
+
+    // this.href="http://www.google.coms"
     // console.log("goToClub", id);
 
     //if local store is a member o that club, then process to a route
@@ -111,19 +124,28 @@ export default class SearchClubForm extends React.Component {
             if (clubQuery.useradd === e) {
               alert("going to club page!!! woot woot");
               // take to the club ID LINK and pass ID as props
-
-              // let linkTo = "/bookclub"+clubQuery.clubid
-              //  return <Link
-              //  to = {linkTo}>ClubHome</Link>
+              this.setState({clubUrl: true});
+              urlCheck();
 
             } else {
               alert("Join the club first!");
+              this.setState({clubUrl: false});
+              urlCheck();
+
             }
           });
         })
       )
       .catch(err => console.log(err));
   };
+
+
+
+
+
+
+
+
 
   handleSubmit(event) {
     event.preventDefault();
@@ -176,6 +198,7 @@ export default class SearchClubForm extends React.Component {
             meetingDate={club.meetingDate}
             action={this.addClubHandler}
             action_club={this.goToClub}
+            url={"/bookclub/" + club._id} 
           />
         );
       });
