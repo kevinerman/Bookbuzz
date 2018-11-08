@@ -30,7 +30,7 @@ export default class BookClubPage extends Component {
 
               <form>
                 <div className="form-group">
-                  <label for="postDiscussion">Post Discussion</label>
+                  <label htmlFor="postDiscussion">Post Discussion</label>
                   <input
                     type="textbox"
                     name="postDiscussion"

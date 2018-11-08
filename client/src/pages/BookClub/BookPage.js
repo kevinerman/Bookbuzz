@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import YourBookClubPage from "../../components/BookClub/YourBookClub"; // will be removed from here to its page
+import YourBookClub from "../../components/BookClub/YourBookClub"; // will be removed from here to its page
 import Wrapper from "../../components/Wrapper";
 
 class BookClub extends Component {
@@ -9,13 +9,15 @@ class BookClub extends Component {
     super(props);
 
     this.state = {
-      // clubis: this.params.id
+      clubid: this.props.match.params
+
     };
 
+    console.log(this.state.clubid);
   }
 
 
-
+x
   render() {
     return (
       <div>
@@ -24,7 +26,9 @@ class BookClub extends Component {
         <hr />
       
       <Wrapper>
-        <YourBookClubPage  
+        <YourBookClub 
+        key={this.state.clubid} 
+        clubId={this.state.clubid} 
         //pass the id of the clubpage
         />
       </Wrapper>
