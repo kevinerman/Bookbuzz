@@ -85,7 +85,11 @@ export default class SearchClubForm extends React.Component {
     event.preventDefault();
 
     // document.getElementById("display_clubs").innerHTML = "";
-
+  //  console.log("**88",this.state.searchResults );
+   this.setState({
+    searchResults: []
+})
+    
     let formData2 = {
       searchClubName: this.state.searchClubName,
       searchByBookNameByBook: this.state.searchByBookNameByBook
