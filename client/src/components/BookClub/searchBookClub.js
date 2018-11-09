@@ -206,7 +206,11 @@ export default class SearchClubForm extends React.Component {
 
     return (
       <div>
-        <h1> Search a Book Club</h1>
+        <div className="card">
+          <div className="card-body">
+          <div className="text-center">
+          <h1> Search a Book Club</h1>
+          <br />
         <form idname="searchClubForm" onSubmit={this.handleSubmit}>
           <p>Please Write Full Club Name</p>
           <p>tHingS arE CasE sEnsItIVe oUt here:</p>
@@ -241,6 +245,10 @@ export default class SearchClubForm extends React.Component {
         </form>
         <div id="display_clubs" className="row" />
         {searched}
+        </div>
+          </div>
+        </div>
+        
       </div>
     );
   }
