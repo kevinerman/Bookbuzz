@@ -19,19 +19,19 @@ class Search extends Component {
   state = {
     labels: [
       { id: "Title", val: "" },
-      { id: "Author", val: ""},
-      { id: "Subject", val: ""}
-  ],
+      { id: "Author", val: "" },
+      { id: "Subject", val: "" }
+    ],
     results: [],
     showResults: false,
     error: ""
   }
 
-  handleInputChange = ( event, id ) => {
+  handleInputChange = (event, id) => {
     const labelIndex = this.state.labels.findIndex(label => label.id === id);
     const label = { ...this.state.labels[labelIndex] };
     label.val = event.target.value;
-    const labels = [ ...this.state.labels ];
+    const labels = [...this.state.labels];
     labels[labelIndex] = label;
     this.setState({ labels: labels });
   }
@@ -39,31 +39,31 @@ class Search extends Component {
   handleFormSubmit = event => {
     event.preventDefault();
     // console.log("I am in handleform submit in searchjs line 32") //working
-    
+
     googleAPI.getBooks(this.state.labels)
       .then(res => {
         console.log(res); //res.data
         console.log("search js", res.data.items);
-        this.setState({ 
+        this.setState({
           labels: [
             { id: "Title", val: "" },
-            { id: "Author", val: ""},
-            { id: "Subject", val: ""}
+            { id: "Author", val: "" },
+            { id: "Subject", val: "" }
           ],
           results: res.data.items,
-          showResults: true 
+          showResults: true
         });
       })
       .catch(err => this.setState({ error: err.message }));
-  } 
+  }
 
-  handleBookSaved = ( event, id ) => {
+  handleBookSaved = (event, id) => {
     event.preventDefault();
     // console.log("inside the handle article saves in search js EVENT", event);
-    
+
     const bookIndex = this.state.results.findIndex(result => result.id === id);
     const book = { ...this.state.results[bookIndex] };
-    console.log("inside the handle book saved in search js, where ID = ", id, " ///// bookIndex = ",bookIndex, " /////& book ", book);
+    console.log("inside the handle book saved in search js, where ID = ", id, " ///// bookIndex = ", bookIndex, " /////& book ", book);
     myAPI.saveBooks({
       title: book.volumeInfo.title,
       author: book.volumeInfo.authors,
@@ -97,9 +97,13 @@ class Search extends Component {
         <hr />
         <hr />
         <Wrapper>
-        <Card title="Search for Books">
-        <center>
+          <center>
             <div className="stack">
+              <div className="book" />
+              <div className="book" />
+              <div className="book" />
+              <div className="book" />
+              <div className="book" />
               <div className="book" />
               <div className="book" />
               <div className="book" />
@@ -107,13 +111,21 @@ class Search extends Component {
               <div className="book" />
             </div>
           </center>
-          <br></br>
-        <SearchForm 
-          submit={this.handleFormSubmit} 
-          changed={this.handleInputChange}
-          labels={this.state.labels} />
-        </Card>
-        <Card title="Top Results">{searchResults}</Card>
+
+          <br />
+          
+          
+          
+          <Card title="Search for Books">
+
+            <br></br>
+            <SearchForm
+              submit={this.handleFormSubmit}
+              changed={this.handleInputChange}
+              labels={this.state.labels} />
+          </Card>
+          <br />
+          <Card title="Top Results">{searchResults}</Card>
         </Wrapper>
       </div>
     );

@@ -31,11 +31,11 @@ export default class NameForm extends React.Component {
     event.preventDefault();
     alert(
       "' book club name was submitted: " +
-        this.state.clubName +
-        " book name " +
-        this.state.bookName +
-        " meeting date and time " +
-        this.state.meetingDate
+      this.state.clubName +
+      " book name " +
+      this.state.bookName +
+      " meeting date and time " +
+      this.state.meetingDate
     );
 
     let formData = {
@@ -50,10 +50,10 @@ export default class NameForm extends React.Component {
     console.log(formData);
     myAPI
       .postClubs(formData)
-      .then(function(response) {
+      .then(function (response) {
         console.log(response);
       })
-      .catch(function(error) {
+      .catch(function (error) {
         console.log(error);
         //Perform action based on error
       });
@@ -62,45 +62,53 @@ export default class NameForm extends React.Component {
   render() {
     return (
       <div>
-        <h1> Add a Book Club</h1>
-        <form idname="addClubForm" onSubmit={this.handleSubmit}>
-          <label>
-            Club Name: {"    "}
+        <div className="card">
+          <div className="card-body">
+          <div className="text-center">
+            <h1> Add a Book Club</h1>
+            <br />
+            <form idname="addClubForm" onSubmit={this.handleSubmit}>
+              <label>
+                Club Name: {"    "}
+                <input
+                  type="text"
+                  value={this.state.clubName}
+                  onChange={this.handleChange}
+                  name="clubName"
+                  required="required"
+                />
+              </label>
+              <br />
+              <label>
+                Selected Book: 
             <input
-              type="text"
-              value={this.state.clubName}
-              onChange={this.handleChange}
-              name="clubName"
-              required="required"
-            />
-          </label>
-          <br />
-          <label>
-            Selected Book:
+                  type="text"
+                  value={this.state.bookName}
+                  onChange={this.handleChange}
+                  name="bookName"
+                  required="required"
+                />
+              </label>
+              <br />
+              <label>
+                Meeting Date & Time: 
             <input
-              type="text"
-              value={this.state.bookName}
-              onChange={this.handleChange}
-              name="bookName"
-              required="required"
-            />
-          </label>
-          <br />
-          <label>
-            Meeting Date& Time:
-            <input
-              type="text"
-              value={this.state.meetingDate}
-              onChange={this.handleChange}
-              placeholder="Second Tuesdays 5pm CST"
-              name="meetingDate"
-              required="required"
-            />
-          </label>
-          <br />
+                  type="text"
+                  value={this.state.meetingDate}
+                  onChange={this.handleChange}
+                  placeholder="Second Tuesdays 5pm CST"
+                  name="meetingDate"
+                  required="required"
+                />
+              </label>
+              <br />
 
-          <input  type="submit" value="Submit" className="btn buttonClubCreate"/>
-        </form>
+              <input type="submit" value="Submit" className="btn buttonClubCreate" />
+            </form>
+            </div>
+          </div>
+        </div>
+
       </div>
     );
   }
